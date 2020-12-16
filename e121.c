@@ -13,13 +13,13 @@ int maxProfit(int* prices, int pricesSize){
     return max_profit;
 }
 
-int main() {
+// int main() {
 
-    int example1[] = {7,1,5,3,6,4};
-    printf("example1: %d\n", maxProfit(example1, 6));
+//     int example1[] = {7,1,5,3,6,4};
+//     printf("example1: %d\n", mmaxProfit(example1, 6));
 
-    int example2[] = {7,6,4,3,1};
-    printf("example2: %d\n", maxProfit(example2, 5));
+//     int example2[] = {7,6,4,3,1};
+//     printf("example2: %d\n", mmaxProfit(example2, 5));
 
-    return 0;
-}
+//     return 0;
+// }
