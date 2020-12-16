@@ -3,7 +3,7 @@
 
 [121. Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock)
 
-翻到 [ptt C\_and\_CPP] 有這題，後來發現 Leetcode 上有類似題目就來做做看。
+翻到 [ptt C\_and\_CPP](https://www.ptt.cc/man/C_and_CPP/D7F6/M.1309694493.A.E8A.html) 有這題，後來發現 Leetcode 上有類似題目就來做做看。
 
 想法很直觀，只能一天買入一天賣出，要求最大的獲利，如果暴力解就是把所有可能排列出來，找最大的，這樣是 O(n^2)。
 
