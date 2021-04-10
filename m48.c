@@ -1,5 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 
+//                                                vvvvv ? vvvvv
 void rotate(int** matrix, int matrixRowSize, int* matrixColSize){
     int tmp;
     int n = matrixRowSize;
@@ -16,26 +18,50 @@ void rotate(int** matrix, int matrixRowSize, int* matrixColSize){
 
 void print(int** matrix, int n) {
 
-    /**
-        Note. 
-        https://www.ptt.cc/bbs/C_and_CPP/M.1465304337.A.9F2.html
-        12. 不要猜想二維陣列可以用 pointer to pointer 來傳遞
-    **/
-
-    printf("%d", *(matrix+0)[0]);
-    // for(int i = 0; i < n; i++) {
-    //     for(int j = 0; j < n; j++) {
-    //         printf("%d ", matrix[i][j]);
-    //     }
-    //     printf("\n");
-    // }
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            printf("%3d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
 }
 
 int main(int argc, char const *argv[])
 {
-    int matrix[4][4] = {{5,1,9,11},{2,4,8,10},{13,3,6,7},{15,14,12,16}};   
-    print(matrix, 4);
-    // rotate(matrix, 4, *matrix[0]);
+    /**
+        Note. 
+        https://www.ptt.cc/bbs/C_and_CPP/M.1465304337.A.9F2.html
+        12. 不要猜想二維陣列可以用 pointer to pointer 來傳遞
+
+        int matrix[4][4] = {{5,1,9,11},{2,4,8,10},{13,3,6,7},{15,14,12,16}};   --> 會出錯
+    **/
+
+
+    int mat[4][4] = {{5,1,9,11},{2,4,8,10},{13,3,6,7},{15,14,12,16}};
+    int n = 4;
+    int **arr = (int**)malloc(sizeof(int*)*n);
+    for(int i = 0; i < n; i++) {
+        arr[i] = (int*)malloc(sizeof(int)*n);
+    }
+
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            arr[i][j] = mat[i][j];
+        }
+    }
+
+    print(arr, n);
+
+    rotate(arr, n, arr[0]);
+    printf("\nafter rotation\n----------\n");
+
+    print(arr, n);
+
+
+    for(int i = 0; i < n; i++) {
+        free(arr[i]);
+    }
+    free(arr);
 
     return 0;
 }
