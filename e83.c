@@ -31,7 +31,7 @@ struct ListNode* deleteDuplicates(struct ListNode* head){
         if(! (head->val ^ prevNode->val)) {
             // delete what head currently poits to
             prevNode->next = head->next;
-            free(head);
+            // free(head);
         }
         else
             prevNode = head;
