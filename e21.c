@@ -52,18 +52,11 @@ struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2){
         }
     }
 
-    while(l1) {
-        // append l1->val
+    if(l1) {
         prev->next = l1;
-        prev = l1;
-        l1 = l1->next;
     }
-
-    while(l2) {
-        // append l2->val
+    if(l2) {
         prev->next = l2;
-        prev = l2;
-        l2 = l2->next;
     }
 
     return head;
