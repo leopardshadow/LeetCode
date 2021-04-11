@@ -13,7 +13,11 @@ struct ListNode {
     struct ListNode *next;
 };
 
-
+/*
+    想法：
+    兩兩一組，互換數字
+    這一組有一個沒東西就離開
+*/
 
 struct ListNode* swapPairs(struct ListNode* head){
 
