@@ -18,16 +18,14 @@ struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2){
     struct ListNode *prev, *head;
 
     // be careful with the edge case ...
-    if(l1 == NULL && l2 == NULL) {
-        return NULL;
-    }
+    // if(l1 == NULL && l2 == NULL) {
+    //     return NULL;
+    // }
     if(l1 == NULL) {
-        head = l2;
-        l2 = l2->next;
+        return l2;
     }
     else if (l2 == NULL){
-        head = l1;
-        l1 = l1->next;
+        return l1;
     }
     else if (l1->val > l2->val) {
         head = l2;
@@ -74,5 +72,5 @@ struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2){
 
 /*
 Runtime: 4 ms, faster than 84.06% of C online submissions for Merge Two Sorted Lists.
-Memory Usage: 6.3 MB, less than 40.13% of C online submissions for Merge Two Sorted Lists.
+Memory Usage: 6.1 MB, less than 55.13% of C online submissions for Merge Two Sorted Lists.
 */
