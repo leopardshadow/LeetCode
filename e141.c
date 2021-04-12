@@ -27,6 +27,11 @@ bool hasCycle(struct ListNode *head) {
         if(curr == false) return false;
         curr = curr->next;
     }
+    /*
+    Runtime: 8 ms, faster than 84.34% of C online submissions for Linked List Cycle.
+    Memory Usage: 8.1 MB, less than 30.05% of C online submissions for Linked List Cycle.
+    */
+
 
     return true;
 }
