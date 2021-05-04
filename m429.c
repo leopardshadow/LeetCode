@@ -55,17 +55,27 @@ void levelOderTraverse(struct Node* root, int **ans, int** returnColumnSizes, in
 
 int** levelOrder(struct Node* root, int* returnSize, int** returnColumnSizes) {
     
+    //***********************************************************************//
+    // Deals with the case of empty tree.
     if(!root) {
         *returnSize = 0;
         *returnColumnSizes = NULL;
         return NULL;
     }
 
+    //***********************************************************************//
+    // Step 1. Get the depth of the tree.
+    //         i.e. Obtain the value of returnSize.
+
     int depth = 0;
 
     findDepth(root, &depth, 1);
 
     *returnSize = depth;
+
+    //***********************************************************************//
+    // Step 2. Get the number of nodes of each level.
+    //         i.e. Decide the value of returnColumnSizes array.
 
     *returnColumnSizes = malloc(sizeof(int*) * depth);
 
@@ -74,6 +84,11 @@ int** levelOrder(struct Node* root, int* returnSize, int** returnColumnSizes) {
     }
 
     findNodeNumEachLevel(root, returnColumnSizes, 0);
+
+    //***********************************************************************//
+    // Step 3. Fill in the result 2d array by the correct value.
+    //         Traverse the whole tree and fill the number to the correct
+    //         position in the result 2d array.
 
     int **result;
 
@@ -88,7 +103,6 @@ int** levelOrder(struct Node* root, int* returnSize, int** returnColumnSizes) {
     }
 
     levelOderTraverse(root, result, returnColumnSizes, 0, &levelCurPos);
-
 
     return result;
 }
@@ -111,10 +125,11 @@ Memory Usage: 8.5 MB, less than 100.00% of C online submissions for N-ary Tree L
 
 
 // Note
-// The total number of nodes is between [0, 104]
+// The total number of nodes is between [0, 10E4]
 // it can be ZERO ...
 
 /*
+// Just a test of directly assigning the answer
 // [1,null,3,2,4,null,5,6]
 
 int** levelOrder(struct Node* root, int* returnSize, int** returnColumnSizes) {
