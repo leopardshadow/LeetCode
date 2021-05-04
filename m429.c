@@ -104,6 +104,8 @@ int** levelOrder(struct Node* root, int* returnSize, int** returnColumnSizes) {
 
     levelOderTraverse(root, result, returnColumnSizes, 0, &levelCurPos);
 
+    free(levelCurPos);
+
     return result;
 }
 
