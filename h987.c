@@ -29,7 +29,8 @@ int calMaxCol(struct TreeNode* root) {
 void traverseTree(struct TreeNode* root, int** returnColumns, int col, int *minCol) {
     if(!root)
         return;
-    (*returnColumns)[col+(*minCol)] += 1;
+    printf("%d\n", col-(*minCol));
+    (*returnColumns)[col-(*minCol)] += 1;
     traverseTree(root->left, returnColumns, col-1, minCol);
     traverseTree(root->right, returnColumns, col+1, minCol);
 }
@@ -54,14 +55,14 @@ int** verticalTraversal(struct TreeNode* root, int* returnSize, int** returnColu
 
 
     for(int i = 0; i < colSize; i++) {
-        printf("retrun size [%d] %d\n", i, returnSize[i]);
+        printf("retrun size [%d] %d\n", i, (*returnColumns)[i]);
     }
 
     int **ans;
 
     ans = calloc(sizeof(int*), colSize);
     for(int i = 0; i < colSize; i++) {
-        ans[i] = calloc(sizeof(int), returnSize[i]);
+        ans[i] = calloc(sizeof(int), (*returnColumns)[i]);
     }
 
     return ans;
