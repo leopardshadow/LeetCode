@@ -26,12 +26,12 @@ int calMaxCol(struct TreeNode* root) {
     return col;
 }
 
-void traverseTree(struct TreeNode* root, int* returnSize, int col, int *minCol) {
+void traverseTree(struct TreeNode* root, int** returnColumns, int col, int *minCol) {
     if(!root)
         return;
-    returnSize[col+(*minCol)] += 1;
-    traverseTree(root->left, returnSize, col-1, minCol);
-    traverseTree(root->right, returnSize, col+1, minCol);
+    (*returnColumns)[col+(*minCol)] += 1;
+    traverseTree(root->left, returnColumns, col-1, minCol);
+    traverseTree(root->right, returnColumns, col+1, minCol);
 }
 
 
@@ -43,21 +43,28 @@ int** verticalTraversal(struct TreeNode* root, int* returnSize, int** returnColu
     
     printf("min = %d, max = %d, size = %d\n", minCol, maxCol, colSize);
 
-    returnSize = calloc(sizeof(int), colSize);
+    *returnSize = colSize;
+    *returnColumns = calloc(sizeof(int), colSize);
 
-    traverseTree(root, returnSize, 0, &minCol);
+    printf("oao\n");
+
+    traverseTree(root, returnColumns, 0, &minCol);
+
+    printf("...\n");
 
 
     for(int i = 0; i < colSize; i++) {
         printf("retrun size [%d] %d\n", i, returnSize[i]);
     }
 
-    returnColumns = calloc(sizeof(int*), colSize);
+    int **ans;
+
+    ans = calloc(sizeof(int*), colSize);
     for(int i = 0; i < colSize; i++) {
-        returnColumns[i] = calloc(sizeof(int), returnSize[i]);
+        ans[i] = calloc(sizeof(int), returnSize[i]);
     }
 
-    return returnColumns;
+    return ans;
 }
 
 
