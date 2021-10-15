@@ -8,6 +8,9 @@ S 0 0
 1 1 2
 */
 
+// Be aware of the corner cases,
+// if the start is also an obstacle
+
 int uniquePathsWithObstacles(int** obstacleGrid, int obstacleGridSize, int* obstacleGridColSize){
 
     int ans = 0;
