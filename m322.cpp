@@ -3,10 +3,10 @@ Record the fewest number of coins to make i
 */
 
 /*
-1 2 5 -> 11
+1 2 5 (11)  -> 3
 0 1 2 3 4 5 6 7 8 9 10 11
 X 1 1     1                          
-X 1 1     1                          
+X 1 1 2 3 1 2 2 3 3  2  3             
 */
 
 class Solution {
@@ -27,17 +27,17 @@ public:
             if(arr[i] > 0)
                 continue;
             
-            int min = 9999999;
+            int minCnt = 9999999;
             // tries every coins
             for(int j = 0; j < coins.size(); j++) {
-                if (arr[i - coins[j]] > 0)
-                    min = min > arr[i - coins[j]] ? arr[i - coins[j]] : min;
+                if (i - coins[j] > 0 && arr[i - coins[j]] > 0)
+                    minCnt = minCnt > arr[i - coins[j]] ? arr[i - coins[j]] : minCnt;
             }
-            arr[i] = min + 1;
+            arr[i] = minCnt + 1;
         }
         
         int ans = arr[amount];
-        delete arr;
+        delete []arr;
         return ans >= 9999999 ? -1 : ans;
     }
 };
