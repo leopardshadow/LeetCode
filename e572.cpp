@@ -13,19 +13,37 @@ class Solution {
 public:
     bool isSubtree(TreeNode* root, TreeNode* subRoot) {
         
+        if(!root)
+            return false;
+        
+        if(isSameTree(root, subRoot))
+            return true;
+
+        return isSubtree(root->left, subRoot) || isSubtree(root->right, subRoot);
+    }
+    
+    bool isSameTree(TreeNode* a, TreeNode* b) {
+        
         // both of them are NULL
-        if(!root && !subRoot)
+        if(!a && !b)
             return true;
         
         // one of them is NULL
-        else if(!root || !subRoot)
+        else if(!a || !b)
             return false;
         
-        bool b = false;
-        if(root->val == subRoot->val) {
-            b = isSubtree(root->left, subRoot->left) && isSubtree(root->right, subRoot->right);
-        }
+        // not the same
+        else if(a->val != b->val)
+            return false;
+        
+        // none of them is NULL
+        else 
+            return isSameTree(a->left, b->left) && isSameTree(a->right, b->right);
 
-        return b || isSubtree(root->left, subRoot) || isSubtree(root->right, subRoot);
     }
 };
+
+/*
+Runtime: 42 ms, faster than 22.65% of C++ online submissions for Subtree of Another Tree.
+Memory Usage: 28.8 MB, less than 83.19% of C++ online submissions for Subtree of Another Tree.
+*/
