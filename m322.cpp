@@ -54,3 +54,66 @@ public:
 Runtime: 80 ms, faster than 65.95% of C++ online submissions for Coin Change.
 Memory Usage: 14.4 MB, less than 65.97% of C++ online submissions for Coin Change.
 */
+
+
+
+/*
+11 = 1 + 10
+   = 2 +  9
+   = 5 +  6
+*/
+class Solution {
+private:
+    vector<int> coins;
+    int *arr;
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        arr = new int [amount+1];
+        for(int i = 0; i < coins.size(); i++) {
+            if(amount >= coins[i])
+                arr[coins[i]] = 1;
+        }
+            
+        
+        this->coins = coins;
+        int ans = change(amount);
+        delete []arr;
+        return ans >= 999999 ? -1 : ans;
+    }
+    
+    int change(int amount) {
+        // for(int i = 0; i < coins.size(); i++) {
+        //     if(amount == coins[i])
+        //         return 1;
+        // }
+
+        
+        if(amount == 0)
+            return 0;
+        
+        if(amount < 0)
+            return 999999;
+        
+        if(arr[amount] > 0) {
+            return arr[amount];
+        }
+
+        
+        int minCnt = 999999;
+        // iterate through every coins
+        for(int i = 0; i < coins.size() ; i++) {
+           minCnt = min(minCnt, change(amount - coins[i]));
+        }
+        minCnt += 1;
+        arr[amount] = minCnt;
+        return minCnt;
+    }
+};
+
+/*
+TLE without memoization
+*/
+/*
+Runtime: 72 ms, faster than 72.33% of C++ online submissions for Coin Change.
+Memory Usage: 15 MB, less than 23.86% of C++ online submissions for Coin Change.
+*/
