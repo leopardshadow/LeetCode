@@ -16,9 +16,17 @@ public:
         // arr stores the fewest number of coins for every amount 
         int *arr = new int [amount + 1];
         
+        // fail for the test case
+        // [1]
+        // 0
+        // Be careful when using amount to initialze the array
+        // do boundary checking!!
+        arr[0] = 0;
+        
         //
         for(int i = 0; i < coins.size(); i++) {
-            arr[i] = 1;
+            if(amount >= coins[i])
+                arr[coins[i]] = 1;
         }
         
         // iterate to generate arr
@@ -41,3 +49,8 @@ public:
         return ans >= 9999999 ? -1 : ans;
     }
 };
+
+/*
+Runtime: 80 ms, faster than 65.95% of C++ online submissions for Coin Change.
+Memory Usage: 14.4 MB, less than 65.97% of C++ online submissions for Coin Change.
+*/
