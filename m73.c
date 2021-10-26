@@ -5,6 +5,10 @@
 ：偷用第一個 col 和第一個 row 來儲存該 row/col 的資訊
 !!! 注意 range，一開始犯的錯是第一個 col 有人是 0，結果存哪 row/col 的第一個 col 和第一個 row 變全 0
 */
+/*
+Note. 在程式裡寫 m.size() 和 m[0].size() 很難懂
+      可以定義變數把他們換成 rowSize 和 colSize
+*/
 class Solution {
 public:
     void setZeroes(vector<vector<int>>& m) {
