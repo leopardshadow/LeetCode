@@ -9,26 +9,64 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+// recursive
+// class Solution {
+// public:
+//     TreeNode* invertTree(TreeNode* root) {
+                
+//         if(!root)
+//             return NULL;
+        
+//         // swap root->left & root->right
+//         TreeNode* temp = root->left;
+//         root->left = root->right;
+//         root->right = temp;
+        
+//         invertTree(root->left);
+//         invertTree(root->right);
+        
+//         return root;
+//     }
+// };
+
+/*
+Runtime: 0 ms, faster than 100.00% of C++ online submissions for Invert Binary Tree.
+Memory Usage: 9.8 MB, less than 5.83% of C++ online submissions for Invert Binary Tree.
+*/
+
+
+// iterative
 class Solution {
 public:
     TreeNode* invertTree(TreeNode* root) {
                 
-        if(!root)
-            return NULL;
+        queue<TreeNode*> q;
+        TreeNode *tn, *temp;
         
-        // swap root->left & root->right
-        TreeNode* temp = root->left;
-        root->left = root->right;
-        root->right = temp;
+        if(root) q.push(root);
         
-        invertTree(root->left);
-        invertTree(root->right);
+        while(!q.empty()) {
+            tn = q.front();
+            q.pop();
+            
+            if(!tn)
+                continue;
+            
+            // swap left & right
+            temp = tn->left;
+            tn->left = tn->right;
+            tn->right = temp;
+            
+            q.push(tn->left);
+            q.push(tn->right);
+        }
         
         return root;
     }
 };
 
+
 /*
 Runtime: 0 ms, faster than 100.00% of C++ online submissions for Invert Binary Tree.
-Memory Usage: 9.8 MB, less than 37.46% of C++ online submissions for Invert Binary Tree.
+Memory Usage: 9.9 MB, less than 5.83% of C++ online submissions for Invert Binary Tree.
 */
