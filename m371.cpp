@@ -41,6 +41,7 @@ public:
     int getSum(int a, int b) {
         int carry, sum;
         do {
+            // cannot left shift on a negative number!!
             carry = (int)((unsigned)(a&b)<<1);
             sum = a ^ b;
             a = carry;
