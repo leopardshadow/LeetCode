@@ -1,13 +1,7 @@
 class Solution {
 private:
-    bool isP(string s) {
-        int n = s.length();
-        for(int i = 0; i < n / 2; i++) {
-            if(s[i] != s[n - 1 - i]) return false;
-        }
-        return true;
-    }
-    bool isP(string s, int l, int r) {
+    string s;
+    bool isP(int l, int r) {
         while(l <= r) {
             if(s[l] != s[r]) return false;
             l++;
@@ -18,6 +12,7 @@ private:
 
 public:
     int countSubstrings(string s) {
+        this->s = s;
         int ans = 0;
         int step;
         // |---|  
@@ -25,7 +20,7 @@ public:
         for(int i = 0; i < s.length(); i++) {
             step = 0;
             while(i - step >= 0 && i + step < s.length()) {
-                if(isP(s, i - step, i + step)) {
+                if(isP(i - step, i + step)) {
                     ans ++;
                     step++;
                 }
@@ -39,7 +34,7 @@ public:
         for(int i = 0; i < s.length() - 1; i++) {
             step = 0;
             while(i - step >= 0 && i + step + 1 < s.length()) {
-                if(isP(s, i - step, i + step + 1)) {
+                if(isP(i - step, i + step + 1)) {
                     ans ++;
                     step++;
                 }
@@ -54,6 +49,6 @@ public:
 };
 
 /*
-Runtime: 344 ms, faster than 9.83% of C++ online submissions for Palindromic Substrings.
-Memory Usage: 383.7 MB, less than 8.53% of C++ online submissions for Palindromic Substrings.
+Runtime: 164 ms, faster than 12.56% of C++ online submissions for Palindromic Substrings.
+Memory Usage: 6.2 MB, less than 97.25% of C++ online submissions for Palindromic Substrings.
 */
