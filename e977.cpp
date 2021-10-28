@@ -15,14 +15,12 @@ public:
         int l = 0, r = nums.size() - 1;
 
         while(l <= r) {
-            int lSq = square(nums[l]),
-                rSq = square(nums[r]);
-            if(lSq >= rSq) {
-                ans.insert(ans.begin(), lSq);
+            if(abs(nums[l]) >= abs(nums[r])) {
+                ans.insert(ans.begin(), square(nums[l]));
                 l++;
             }
             else {
-                ans.insert(ans.begin(), rSq);
+                ans.insert(ans.begin(), square(nums[r]));
                 r--;
             }
         }
