@@ -35,3 +35,28 @@ int main(int argc, char const *argv[])
 
     return 0;
 }
+
+
+/*
+[-2,1,-3,4,-1,2,1,-5,4]
+ -2 1 -2 4  3 5 6  1 5
+ -2 1  1 4  4 5 6  6 6
+*/
+
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int nmax = nums[0],
+            ans = nums[0];
+        for(int i = 1; i < nums.size(); i++) {
+            nmax = max(nums[i], nmax + nums[i]);
+            ans = max(ans, nmax);
+        }
+        return ans;
+    }
+};
+
+/*
+Runtime: 96 ms, faster than 55.40% of C++ online submissions for Maximum Subarray.
+Memory Usage: 67.7 MB, less than 53.82% of C++ online submissions for Maximum Subarray.
+*/
