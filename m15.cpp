@@ -38,8 +38,19 @@ TLE for now
 //     }
 // };
 
-// the way to remove duplicates is challenging...
 // sort and it becomes Leetcode #167 Two Sum II
+
+// the way to remove duplicates is challenging...
+/*
+避免重複的中心概念是，讓 i < l < r，而且他們各自都不重複
+ㄜ，好像有點抽象
+* 跑 i 迴圈時的 nums[i] == nums[i - 1] 是避免 i 有重複
+* nums[l] == nums[l-1] 則是讓 l 不重複，r 亦然
+以 [0,0,0,0,...,0] 來說，一開始 i = 0，進入 search，搜尋範圍是第二個開始，
+在這個 search 會找到 nums[i] = nums[l] = nums[r] = 0 的解
+而不會有兩組解的 i nums[i] 都是 0
+*/
+
 
 class Solution {
 public:
