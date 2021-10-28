@@ -22,6 +22,7 @@
 /*
 Hint. sliding window
 用 left 和 right 兩個指針記錄當下 window 的位置，讓 right 慢慢往右乘，如果乘積滿足 "less than K"，就代表這個 sliding window 內所有元素都符合 "less than K"
+加的 (left - right + 1) 代表的是以 right 為尾巴有幾種可能
 */
 class Solution {
 public:
