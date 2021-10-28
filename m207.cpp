@@ -7,21 +7,21 @@ Note. 通常 Graph 可以用
 class Course {
 public:
     int inDeg;  // you need to take inDeg courses before taking this one
-    vector<int> nextC;  // the course is other courses'  nextCequisites
+    vector<int> nextC;  // the course is other courses'  prerequisites
 };
 
 class Solution {
 public:
-    bool canFinish(int numCourses, vector<vector<int>>& nextCequisites) {
+    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
         
         vector<Course> courses(numCourses);
         // 1 -> 0
-        for(int i = 0; i < nextCequisites.size(); i++) {
-            courses[ nextCequisites[i][1] ].nextC.push_back( nextCequisites[i][0] );
-            courses[ nextCequisites[i][0] ].inDeg++;
+        for(int i = 0; i < prerequisites.size(); i++) {
+            courses[ prerequisites[i][1] ].nextC.push_back( prerequisites[i][0] );
+            courses[ prerequisites[i][0] ].inDeg++;
         }
         
-        // find out courses that didn't need nextCequisites        
+        // find out courses that didn't need prerequisites        
         vector<int> q;
         for(int i = 0; i < courses.size(); i++) {
             if(courses[i].inDeg == 0) {
