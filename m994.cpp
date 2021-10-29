@@ -1,3 +1,28 @@
+// BFS
+
+/*
+看到好酷的解法
+用 vector<int> dir={-1,0,1,0,-1}; 來決定方向
+(-1 0) 1 0 -1
+-1 (0 1) 0 -1
+-1 0 (1 0) -1
+-1 0 1 (0 -1)
+
+另外，用 
+
+while(!q.empty())
+{
+    int sz = q.size();
+    while(sz--)
+    {
+...
+就可以不用像我一樣存下 time，可以省記憶體空間
+
+他也在一開始存下 fresh 數量，每次變爛都 -1，這樣就不會最後再逐個檢查!
+
+https://leetcode.com/problems/rotting-oranges/discuss/588024/C%2B%2B-or-BFS-or-100-Space-95-time-or-explanation-of-logic
+*/
+
 struct Status {
 public:
     int r, c, t;
