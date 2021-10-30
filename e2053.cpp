@@ -5,7 +5,7 @@ public:
         int i;
         for(i = 0; i < arr.size(); i++) {
             if(m.find(arr[i]) == m.end())
-                m[ arr[i] ] = 0;
+                m.insert(arr[i], 0);
             else
                 m[ arr[i] ] += 1;
         }
@@ -15,7 +15,16 @@ public:
                 if(k == 0) break;
             }
         }
-        return k == 0 ? arr[i] : "";
+
+        // the order is what I thought in the beginning...
+        // for(auto a : m) {
+        //     if(a.second == 0) {
+        //         k--;
+        //         if(k == 0) return a.first;
+        //     }
+        // }
+        
+        return "";
     }
 };
 
