@@ -3,6 +3,12 @@
         "deque": "cpp",
         "string": "cpp",
         "vector": "cpp",
-        "random": "c"
+        "random": "c",
+        "array": "cpp",
+        "hash_map": "cpp",
+        "bitset": "cpp",
+        "string_view": "cpp",
+        "initializer_list": "cpp",
+        "utility": "cpp"
     }
 }

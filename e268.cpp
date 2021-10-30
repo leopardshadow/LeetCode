@@ -1,4 +1,10 @@
 /*
+Besides bit operation, 
+https://blog.techbridge.cc/2020/02/16/leetcode-%E5%88%B7%E9%A1%8C-pattern-cyclic-sort/
+try cyclic-sort!!
+*/
+
+/*
 [9,6,4,2,3,5,7,0,1]  size = 9
 */
 class Solution {
