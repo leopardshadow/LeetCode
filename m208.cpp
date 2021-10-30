@@ -1,3 +1,9 @@
+/*
+Notes.
+1. 以空間換取時間
+2. 另外建一個 TrieNode 的 class
+*/
+
 class TrieNode {
 public:
     TrieNode *child[26];
