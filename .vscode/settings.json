@@ -9,6 +9,7 @@
         "bitset": "cpp",
         "string_view": "cpp",
         "initializer_list": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "unordered_map": "cpp"
     }
 }
