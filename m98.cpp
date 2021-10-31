@@ -1,3 +1,11 @@
+/*
+我是利用 BST 左邊所有節點都比這個節點小，右邊所有節點都比這個節點大，這樣遞迴往下
+看到也有人是把他 in-order 的 traverse 過一次，他的印出來順序剛好會是排序過的，只要檢查這點就好了
+
+我有特別處理值在 INT_MIN 和 INT_MAX 的 case，多寫了 shouldBigger 和 shouldSmaller
+如果他的 range 都不在那麼邊邊，只要 inRange 就好了
+*/
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
