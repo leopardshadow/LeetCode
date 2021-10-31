@@ -3,12 +3,12 @@
 class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
-        map<int, bool> m;
+        unordered_map<int, bool> m;
         for(int n : nums) {
             m[n] = true;
         }
         int maxLen = 0, i, len;
-        map<int, bool>::iterator f;
+        unordered_map<int, bool>::iterator f;
         while(!m.empty()) {
             auto ms = m.begin();
             i = 1;
@@ -31,6 +31,6 @@ public:
 };
 
 /*
-Runtime: 96 ms, faster than 64.07% of C++ online submissions for Longest Consecutive Sequence.
-Memory Usage: 31.7 MB, less than 29.53% of C++ online submissions for Longest Consecutive Sequence.
+Runtime: 68 ms, faster than 80.84% of C++ online submissions for Longest Consecutive Sequence.
+Memory Usage: 30.9 MB, less than 48.16% of C++ online submissions for Longest Consecutive Sequence.
 */
