@@ -18,8 +18,13 @@ public:
     
     TreeNode* buildTree(int preS, int preE, int inS, int inE) {
         
-        if(preS > preE)
+        // either one is okay :)
+        // if(preS > preE)
+        //     return NULL;
+
+        if(inS > inE)
             return NULL;
+
         
         int inM = pos[preorder[preS]];
         int leftSize = inM - inS;
@@ -45,6 +50,6 @@ public:
 
 
 /*
-Runtime: 12 ms, faster than 92.99% of C++ online submissions for Construct Binary Tree from Preorder and Inorder Traversal.
-Memory Usage: 26.6 MB, less than 17.02% of C++ online submissions for Construct Binary Tree from Preorder and Inorder Traversal.
+Runtime: 8 ms, faster than 98.50% of C++ online submissions for Construct Binary Tree from Preorder and Inorder Traversal.
+Memory Usage: 26.5 MB, less than 26.95% of C++ online submissions for Construct Binary Tree from Preorder and Inorder Traversal.
 */
