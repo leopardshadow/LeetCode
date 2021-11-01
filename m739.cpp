@@ -1,0 +1,31 @@
+
+/*
+如果 a a+n，前面那個 a 就會被拿掉
+所以留在 stack 的元素一定是漸漸變小的，
+當下一天溫度進來，就把他放進 stack 裡比較，看他能幹掉幾個之前的溫度
+*/
+class Solution {
+public:
+    vector<int> dailyTemperatures(vector<int>& temps) {
+        vector<int> ans(temps.size(), 0);
+        stack <int> st;  // store the **index**
+        st.push(0);
+        for(int i = 1; i < temps.size(); i++) {
+            while(!st.empty() && temps[i] > temps[st.top()]) {
+                ans[ st.top() ] = i - st.top();
+                st.pop();
+            }
+            st.push(i);
+        }
+        while(!st.empty()) {
+            ans[ st.top() ] = 0;
+            st.pop();
+        }
+        return ans;
+    }
+};
+
+/*
+Runtime: 156 ms, faster than 60.71% of C++ online submissions for Daily Temperatures.
+Memory Usage: 89 MB, less than 26.21% of C++ online submissions for Daily Temperatures.
+*/
