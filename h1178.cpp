@@ -40,7 +40,10 @@ word 的字由 puzzle 任意組合而成，換句話說，對於所有 word 的�
 但有個很關鍵的線索還沒用到：
 length of the puzzle is only 7
 
-?????
+因為長度只有 7，所以很容易就可以把他所有 subset 寫出來
+當我們建好 words 出現頻率的 hash table 後，
+就可以直接找到出現了幾次，算和
+這樣不管 words 有多少個都沒差
 
 */
 
