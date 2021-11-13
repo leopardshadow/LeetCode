@@ -29,3 +29,36 @@ public:
 Runtime: 156 ms, faster than 60.71% of C++ online submissions for Daily Temperatures.
 Memory Usage: 89 MB, less than 26.21% of C++ online submissions for Daily Temperatures.
 */
+
+
+/*
+11.13 daily
+之前的寫法比較好，只要存 index 就好了，溫度數值再從 temps 讀
+*/
+
+class Solution {
+public:
+    vector<int> dailyTemperatures(vector<int>& temps) {
+        vector<int> ans(temps.size(), 0);
+        stack<pair<int, int>> st;
+        st.push(make_pair(0, temps[0]));
+        for(int i = 1; i < temps.size(); i++) {
+            while(!st.empty() && temps[i] > st.top().second) {
+                // ans.push_back(i - st.top().first);
+                ans[st.top().first] = i - st.top().first;
+                st.pop();
+            }
+            st.push(make_pair(i, temps[i]));
+        }
+        // while(!st.empty()) {
+        //     ans.push_back(0);
+        //     st.pop();
+        // }
+        return ans;
+    }
+};
+
+/*
+Runtime: 152 ms, faster than 61.80% of C++ online submissions for Daily Temperatures.
+Memory Usage: 92.9 MB, less than 10.10% of C++ online submissions for Daily Temperatures.
+*/
