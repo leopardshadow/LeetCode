@@ -27,3 +27,23 @@ int maxProfit(int* prices, int pricesSize) {
 
 //     return 0;
 // }
+
+
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int maxProfit = 0;
+        int maxPrice = prices.back();
+        for(int i = prices.size() - 2; i >= 0; i--) {
+            maxProfit = max(maxPrice - prices[i], maxProfit);
+            maxPrice = max(maxPrice, prices[i]);
+        }
+        return maxProfit;
+    }
+};
+
+/*
+Runtime: 128 ms, faster than 41.81% of C++ online submissions for Best Time to Buy and Sell Stock.
+Memory Usage: 93.4 MB, less than 52.43% of C++ online submissions for Best Time to Buy and Sell Stock.
+*/
