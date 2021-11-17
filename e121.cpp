@@ -47,3 +47,32 @@ public:
 Runtime: 128 ms, faster than 41.81% of C++ online submissions for Best Time to Buy and Sell Stock.
 Memory Usage: 93.4 MB, less than 52.43% of C++ online submissions for Best Time to Buy and Sell Stock.
 */
+
+
+
+
+/*
+看到 ptt C_and_CPP https://www.ptt.cc/man/C_and_CPP/D7F6/M.1309694493.A.E8A.html
+這題用遞迴解要怎麼做
+我用自己的方式寫的一個版本
+*/
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        return solve(prices, 0).first;
+    }
+    // maxProfix, maxPrice
+    pair<int, int> solve(vector<int>& prices, int i) {
+        if(i == prices.size() - 1)
+            return {0, prices[i]};
+        else {
+            pair<int, int> temp = solve(prices, i+1);
+            return {max(temp.first, temp.second - prices[i]), max(temp.second, prices[i])};
+        }
+    }
+};
+
+/*
+Runtime: 148 ms, faster than 30.84% of C++ online submissions for Best Time to Buy and Sell Stock.
+Memory Usage: 121.4 MB, less than 5.97% of C++ online submissions for Best Time to Buy and Sell Stock.
+*/
