@@ -25,3 +25,26 @@ public:
 Runtime: 48 ms, faster than 87.42% of C++ online submissions for Find All Numbers Disappeared in an Array.
 Memory Usage: 33.8 MB, less than 53.94% of C++ online submissions for Find All Numbers Disappeared in an Array.
 */
+
+
+// 11.18 daily challenges
+
+class Solution {
+public:
+    vector<int> findDisappearedNumbers(vector<int>& nums) {
+        vector<int> ans;
+        for(int i = 0; i < nums.size(); i++) {
+            nums[abs(nums[i])-1] = -abs(nums[abs(nums[i])-1]);
+        }
+        for(int i = 0; i < nums.size(); i++) {
+            if(nums[i] > 0)
+                ans.push_back(i+1);
+        }
+        return ans;
+    }
+};
+
+/*
+Runtime: 40 ms, faster than 97.58% of C++ online submissions for Find All Numbers Disappeared in an Array.
+Memory Usage: 33.7 MB, less than 80.17% of C++ online submissions for Find All Numbers Disappeared in an Array.
+*/
