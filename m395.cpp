@@ -13,14 +13,18 @@
 */
 
 class Solution {
+    int ans;
 public:
     int longestSubstring(string s, int k) {
-        return solve(s, k, 0, s.length() - 1);
+        ans = 0;
+        solve(s, k, 0, s.length() - 1);
+        return ans;
     }
     
-    int solve(string s, int k, int l, int r) {
-        if(l > r) return 0;
-        int ans = 0;
+    void solve(string s, int k, int l, int r) {
+        if(l > r) return;
+        if(r - l + 1 <= ans) return;
+        
         int cnt[26] = {0};
         for(int i = l; i <= r; i++)
             cnt[s[i] - 'a']++;
@@ -32,22 +36,24 @@ public:
                 break;
             }
         }
-        if(allK) return r - l + 1;
+        if(allK) {
+            ans = max(ans, r - l + 1);
+            return;
+        }
         int j = l;
         int prevJ = l;
         while(j <= r) {
             if(cnt[s[j] - 'a'] > 0 && cnt[s[j] - 'a'] < k) {
-                ans = max(ans, solve(s, k, prevJ, j-1));
+                solve(s, k, prevJ, j-1);
                 prevJ = j + 1;
             }
             j++;
         }
-        ans = max(ans, solve(s, k, prevJ, j-1));
-        return ans;
+        solve(s, k, prevJ, j-1);
     }
 };
 
 /*
-Runtime: 12 ms, faster than 43.92% of C++ online submissions for Longest Substring with At Least K Repeating Characters.
-Memory Usage: 75.7 MB, less than 5.47% of C++ online submissions for Longest Substring with At Least K Repeating Characters.
+Runtime: 8 ms, faster than 49.18% of C++ online submissions for Longest Substring with At Least K Repeating Characters.
+Memory Usage: 75.7 MB, less than 5.26% of C++ online submissions for Longest Substring with At Least K Repeating Characters.
 */
