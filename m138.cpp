@@ -1,4 +1,10 @@
 /*
+像這樣 deep copy 的題目，這題是 linked list，還有 graph 版本的
+我是用 map 來存舊對應到新的地址，space complexity 是 O(n)，n 是 節點數量
+但也有 O(1) 的做法，指來指去的，重複利用已經不用的 address
+*/
+
+/*
 // Definition for a Node.
 class Node {
 public:
