@@ -6,6 +6,7 @@ sum(n) - 所有數字 n 的和
 (這裡的 n 對應的是 nums[i])
 ---
 從頭到尾沒看答案生出來的結果，速度超慢，只贏 8.04%
+優化了一點點，現在到 10.06%，主要應該是差在往前跑那裡
 */
 
 class Record {
@@ -50,17 +51,17 @@ public:
             // we'll need to check. the previos one
             if(table[i].n == table[i-1].n + 1) {
                 j = i - 2;
+                while(j >= 0) {
+                    table[i].maxV = max(table[i].maxV, table[j].maxV + table[i].sum);
+                    j--;
+                }
+                ans = max(ans, table[i].maxV);
             }
-            // otherwise, we can search from previos one
+            // otherwise, we can directly add 
             else {
-                j = i - 1;
+                table[i].maxV = ans + table[i].sum;
+                ans = table[i].maxV;
             }
-            while(j >= 0) {
-                table[i].maxV = max(table[i].maxV, table[j].maxV + table[i].sum);
-                j--;
-            }
-
-            ans = max(ans, table[i].maxV);
         }
         return ans;
     }
@@ -68,6 +69,6 @@ public:
 
 
 /*
-Runtime: 32 ms, faster than 8.04% of C++ online submissions for Delete and Earn.
-Memory Usage: 9.6 MB, less than 70.15% of C++ online submissions for Delete and Earn.
+Runtime: 24 ms, faster than 10.06% of C++ online submissions for Delete and Earn.
+Memory Usage: 9.4 MB, less than 71.46% of C++ online submissions for Delete and Earn.
 */
