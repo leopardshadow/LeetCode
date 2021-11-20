@@ -36,3 +36,39 @@ public:
         return ans;
     }
 };
+
+/////////////////////////
+
+// DP D3
+
+/*
+0 1 2
+2 1 1 2
+2 1 3 
+*/
+
+class Solution {
+public:
+    int rob(vector<int>& nums) {
+        if(nums.size() == 1)
+            return nums[0];
+        else if(nums.size() == 2)
+            return max(nums[0], nums[1]);
+        vector<int> table(nums.size(), 0);
+        table[0] = nums[0];
+        table[1] = nums[1];
+        for(int i = 2; i < nums.size(); i++) {
+            table[i] = max(table[i-1],
+                           table[i-2] + nums[i]);
+            // this is not very intuitive to me ... QQ
+            table[i-1] = max(table[i-1], table[i-2]);
+        }
+        return table.back();
+    }
+};
+
+/*
+Runtime: 0 ms, faster than 100.00% of C++ online submissions for House Robber.
+Memory Usage: 7.8 MB, less than 42.40% of C++ online submissions for House Robber.
+*/
+
