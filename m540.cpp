@@ -1,4 +1,4 @@
-// 11.20 Daily
+// 2021.11.20 Daily
 /*
 天啊，這類型變形也太多
 如果不限制 time complexity，全部直接走過一次，花 O(n) 收工
@@ -7,6 +7,7 @@
 有點腦筋急轉彎的感覺，解法滿酷的，因為只有一個出現一次的元素，其他都是出現兩次
 陣列又是排序過的，所以切開來一邊是奇數，一邊是偶數，就往奇數那邊找
 關鍵是 "sorted"，之前遇到這種沒有這個性質可以用，要好好運用所有可以用的東西
+這題要回傳「值」，而不是 index，一開始還弄錯 @@
 */
 /*
 X X 1 2 3 4 5 X
@@ -16,10 +17,10 @@ X X 1 2 3 4 5 X
 class Solution {
 public:
     int singleNonDuplicate(vector<int>& nums) {
-        // nums.insert(nums.begin(), -1);
-        // nums.insert(nums.begin(), -1);
-        // nums.push_back(10000000);
-        // nums.push_back(10000000);
+        nums.insert(nums.begin(), -1);
+        nums.insert(nums.begin(), -1);
+        nums.push_back(10000000);
+        nums.push_back(10000000);
         int l = 0, r = nums.size() - 1, m;
         while(l <= r) {
             m = (l + r) / 2;
