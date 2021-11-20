@@ -72,3 +72,31 @@ Runtime: 0 ms, faster than 100.00% of C++ online submissions for House Robber.
 Memory Usage: 7.8 MB, less than 42.40% of C++ online submissions for House Robber.
 */
 
+
+// 改寫成不存整張 table 的話
+
+class Solution {
+public:
+    int rob(vector<int>& nums) {
+        if(nums.size() == 1)
+            return nums[0];
+        else if(nums.size() == 2)
+            return max(nums[0], nums[1]);
+        int dp2 = nums[0],  // one previous
+            dp1 = nums[1],  // two preiovus
+            dp;
+        for(int i = 2; i < nums.size(); i++) {
+            dp = max(dp1,
+                     dp2 + nums[i]);
+            // this is not very intuitive to me ... QQ
+            dp2 = max(dp1, dp2);
+            dp1 = dp;
+        }
+        return dp;
+    }
+};
+
+/*
+Runtime: 0 ms, faster than 100.00% of C++ online submissions for House Robber.
+Memory Usage: 7.6 MB, less than 72.71% of C++ online submissions for House Robber.
+*/
