@@ -103,6 +103,11 @@ Memory Usage: 7.6 MB, less than 72.71% of C++ online submissions for House Robbe
 
 /////////////////////////
 // 這樣寫法比較直觀 !!!!
+/*
+dp 的表格啊，是有物理意義的，這裏的表格的物理意義是
+table[i] 存的是如果現在 problem size 變小成 0 到 i，他的答案是多少
+也就是從 0, 1, 2, ..., i，在符合題目要求下，能夠搶到的最大金額
+*/
 
 /*
 2. 7  9. 3. 1. 
