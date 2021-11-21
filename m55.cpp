@@ -66,3 +66,42 @@ public:
 Runtime: 64 ms, faster than 60.22% of C++ online submissions for Jump Game.
 Memory Usage: 48.4 MB, less than 49.09% of C++ online submissions for Jump Game.
 */
+
+
+
+// DP D4
+
+// Key: 紀錄最大可以到達的 index，之後往前走，更新最大可以到達的 index
+
+/*
+2 3 1 1 4
+s....
+  s......
+mI = 0
+mI = 0 + 2 = 2
+i = 1:
+i = 2: 
+  
+3 2 1 0 4
+s......
+  s....
+    s..
+      s
+*/
+
+class Solution {
+public:
+    bool canJump(vector<int>& nums) {
+        int maxIndex = 0;
+        //                   注意 i 的範圍       vvvvvvvvvvvvvvvvvvvv
+        for(int i = maxIndex; i <= maxIndex && i <= nums.size() - 1; i++) {
+            maxIndex = max(maxIndex, i + nums[i]);
+        }
+        return maxIndex >= nums.size() - 1;
+    }
+};
+
+/*
+Runtime: 71 ms, faster than 37.99% of C++ online submissions for Jump Game.
+Memory Usage: 48.1 MB, less than 94.79% of C++ online submissions for Jump Game.
+*/
