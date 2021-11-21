@@ -1,9 +1,16 @@
 // DP D4
 
 /*
+第一次寫自己的寫法
 這題算是 55. Jump Game 的變形
 只是 55. 算的是可不可以到最後一個，而這題則是問最小步數
 我是用兩層迴圈去繞，更新從 i 往後 1~ nums[i] 的最小步數，但這樣比較慢
+time complexity: O(n^2)
+space complexity: O(n)
+*/
+
+/*
+看到討論區有 time - O(n) / space - O(1) 的寫法 -- greedy BFS
 */
 
 /*
