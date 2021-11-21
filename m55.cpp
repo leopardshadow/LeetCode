@@ -105,3 +105,30 @@ public:
 Runtime: 71 ms, faster than 37.99% of C++ online submissions for Jump Game.
 Memory Usage: 48.1 MB, less than 94.79% of C++ online submissions for Jump Game.
 */
+
+
+
+
+// 寫了 45. Jump Game II 之後來試試 greedy + BFS 的寫法
+// 說明就去看那吧
+ 
+class Solution {
+public:
+    bool canJump(vector<int>& nums) {
+        int l = 0, r = 0, nextR = -1;
+        while(r < nums.size() - 1) {
+            for(int i = l; i <= r; i++)
+                nextR = max(nextR, i + nums[i]);
+            if(r == nextR)
+                break;
+            l = r + 1;
+            r = nextR;
+        }
+        return r >= nums.size() - 1;
+    }
+};
+
+/*
+Runtime: 48 ms, faster than 95.92% of C++ online submissions for Jump Game.
+Memory Usage: 48.4 MB, less than 47.98% of C++ online submissions for Jump Game.
+*/
