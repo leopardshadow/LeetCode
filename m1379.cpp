@@ -64,3 +64,47 @@ public:
 Runtime: 726 ms, faster than 19.89% of C++ online submissions for Find a Corresponding Node of a Binary Tree in a Clone of That Tree.
 Memory Usage: 163.9 MB, less than 83.49% of C++ online submissions for Find a Corresponding Node of a Binary Tree in a Clone of That Tree.
 */
+
+
+
+// (paired) BFS
+/*
+我以為用 queue 會快一點誒
+不過如果 target 都在很深的地方的話，BFS 回把它往上所有層都找過才會輪到 target，如果 target 很淺的話，翻一下就找到了
+哪種比較好要看問題的情況
+*/
+
+class Solution {
+    vector<bool> direcs;
+public:
+    TreeNode* getTargetCopy(TreeNode* original, TreeNode* cloned, TreeNode* target) {
+        TreeNode *node1, *node2;
+        queue<TreeNode*> q1, q2;
+        q1.push(original);
+        q2.push(cloned);
+        while(!q1.empty()) {
+            node1 = q1.front();
+            node2 = q2.front();
+            if(node1 == target)
+                return q2.front();
+            else {
+                q1.pop();
+                q2.pop();
+            }
+            if(node1->left) {
+                q1.push(node1->left);
+                q2.push(node2->left);
+            }
+            if(node1->right) {
+                q1.push(node1->right);
+                q2.push(node2->right);
+            }
+        }
+        return NULL;  // will never returns this in this question
+    }
+};
+
+/*
+Runtime: 991 ms, faster than 5.08% of C++ online submissions for Find a Corresponding Node of a Binary Tree in a Clone of That Tree.
+Memory Usage: 166 MB, less than 6.04% of C++ online submissions for Find a Corresponding Node of a Binary Tree in a Clone of That Tree.
+*/
