@@ -40,3 +40,41 @@ public:
 Runtime: 4 ms, faster than 81.04% of C++ online submissions for Maximum Product Subarray.
 Memory Usage: 11.8 MB, less than 14.24% of C++ online submissions for Maximum Product Subarray.
 */
+
+//***************************************************************************//
+// DP D6
+
+/*
+          [2,3,-2,4]
+maxProd -  2 6 -2
+minProd -  2 3 -6
+  ans.  -  2 6  6 6
+  
+         [-2, 0,-1]
+maxProd - -2  0 -1
+minProd - -2  0 -1
+  ans.  - -2  0  0
+
+*/
+
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) {
+        int maxProd = nums[0],
+            minProd = nums[0];
+        int ans = nums[0];
+        for(int i = 1; i < nums.size(); i++) {
+            if(nums[i] < 0)
+                swap(maxProd, minProd);
+            maxProd = max(maxProd * nums[i], nums[i]);
+            minProd = min(minProd * nums[i], nums[i]);
+            ans = max(ans, maxProd);
+        }
+        return ans;
+    }
+};
+
+/*
+Runtime: 3 ms, faster than 85.44% of C++ online submissions for Maximum Product Subarray.
+Memory Usage: 11.6 MB, less than 90.01% of C++ online submissions for Maximum Product Subarray.
+*/
