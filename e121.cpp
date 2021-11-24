@@ -76,3 +76,23 @@ public:
 Runtime: 148 ms, faster than 30.84% of C++ online submissions for Best Time to Buy and Sell Stock.
 Memory Usage: 121.4 MB, less than 5.97% of C++ online submissions for Best Time to Buy and Sell Stock.
 */
+
+//***************************************************************************//
+// DP D7
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int ans = 0, maxPrice = prices.back();
+        for(int i = prices.size() - 2; i >= 0; i--) {
+            ans = max(ans, maxPrice - prices[i]);
+            maxPrice = max(maxPrice, prices[i]);
+        }
+        return ans;
+    }
+};
+
+/*
+Runtime: 124 ms, faster than 45.11% of C++ online submissions for Best Time to Buy and Sell Stock.
+Memory Usage: 93.4 MB, less than 52.55% of C++ online submissions for Best Time to Buy and Sell Stock.
+*/
