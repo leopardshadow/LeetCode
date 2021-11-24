@@ -13,6 +13,7 @@ Key:
 時間也會比較快，因為只走過一遍 vector，而我的作法走了兩次，空間還用比較多
 
 我直觀上真的會用 (i < j) (v[i] + i) + max{j} (v[j] - j) 跑過全部 i 去想，有時候反著想比較快!!
+就像 121. Best Time to Buy and Sell Stock 也是從尾巴來比較簡單~~
 */
 
 class Solution {
