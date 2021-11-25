@@ -5,7 +5,14 @@ If we do brute-froce:
 every positions take turns to be the upper-left corner O(n^2)
 and expands its size gradually O(n)
 if it contains all 1 for that square !! for this steps, if we're just counting the 1s it will be O(n^2)
-but in this step, we're doing redundant things, the process can be simplified
+
+it will be O(n^5) in total, definitely will lead to a TLE
+
+but in last step, we're doing redundant things, the process can be simplified
+we can reduce the time to O(1)
+so the overall time complxity will be O(n^3)
+
+這是我的解法，看了討論區發現有超級精簡的解法! (不是用這個方法ㄉ)
 
 we construct a table, table[r][c] represents the 1s between the square (0, 0) (upper-left corner) and (r, c) (bottom-right corner)
 
