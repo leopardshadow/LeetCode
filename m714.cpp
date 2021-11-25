@@ -3,6 +3,8 @@
 /*
 寫完 309. Best Time to Buy and Sell Stock with Cooldown 這題之後，寫這題滿有感覺的
 只要把 fee 減掉的部分放在加 profits 那邊就好
+
+話說這樣如果考個 cooldown + transaction fee 也可以~
 */
 
 class Solution {
