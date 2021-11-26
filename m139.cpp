@@ -68,3 +68,36 @@ f(s) will return true if  f(ws) is true
 // };
 
 // TLE for now
+
+
+
+/*
+0 1 2 3 4 5 6 7
+l e e t c o d e
+T.      T        T
+
+*/
+
+//***************************************************************************//
+// DP D9
+class Solution {
+public:
+    bool wordBreak(string s, vector<string>& wordDict) {
+        vector<bool> table(s.length() + 1, false);
+        table[0] = true;
+        for(int i = 0; i < s.length(); i++) {
+            if(table[i]) {
+                for(string w : wordDict) {
+                    if(i + w.length() < table.size() && s.substr(i, w.length()) == w)
+                        table[i + w.length()] = true;
+                }
+            }
+        }
+        return table.back();
+    }
+};
+
+/*
+Runtime: 9 ms, faster than 61.68% of C++ online submissions for Word Break.
+Memory Usage: 7.6 MB, less than 96.06% of C++ online submissions for Word Break.
+*/
