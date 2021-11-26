@@ -35,6 +35,9 @@ Memory Usage: 9.6 MB, less than 93.95% of C++ online submissions for Search Inse
 
 
 //***************************************************************************//
+
+// 2021.11.26
+
 /*
 這次試了不加 boundary 的作法，好麻煩啊
 加 boundary 還是比較簡單，就算如果他數值的範圍是 INT_MIN 到 INT_MAX 也沒關係，我先確認頭、尾不是 INT_MIN 和 INT_MAX 就可以插入了
