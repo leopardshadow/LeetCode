@@ -4,6 +4,14 @@ priority_queue 沒特別指定的話是 max heap，大的在上面，所以直�
 後面拿出來時要記得前面已經調換順序了
 */
 
+/*
+heap 那邊啊，如果想用 lambda 的可以這樣寫
+```
+auto comp = [](pair<int, int> a1, pair<int, int> a2){return a1.first < a2.first;}; 
+priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(comp)> pq(comp);
+```
+*/
+
 class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
