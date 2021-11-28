@@ -1,5 +1,5 @@
 /*
-最簡單的想法是直接複製整張 matrux，這樣才能區分原本的 0 和新設的 0，space complexity 是 O(mn)。
+最簡單的想法是直接複製整張 matrix，這樣才能區分原本的 0 和新設的 0，space complexity 是 O(mn)。
 如果改紀錄哪幾個 row, col 都要設成 0，space complexity 是 O(m + n)。
 題目問有沒有辦法在 constant space complecity 下完成？
 ：偷用第一個 col 和第一個 row 來儲存該 row/col 的資訊
