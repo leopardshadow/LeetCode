@@ -65,7 +65,7 @@ public:
         int l = 0, r = 0, steps = 0;
         int nextR = 0;
         // until r reaches the last element (r >= maxIndex, maxIndex = nums.size() - 1)
-        while(r < nums.size() - 1) {  
+        while(r < nums.size() - 1) {  // 注意這裡的範圍R，因為 r == nums.size() - 1 時就該跳出了，所以 while 繼續的條件是 <
             for(int i = l; i <= r; i++)
                 nextR = max(nextR, i + nums[i]);
             l = r + 1;
