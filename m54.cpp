@@ -87,3 +87,49 @@ direction 轉換那邊是 FSM
             }
         }
 */
+
+//***************************************************************************//
+// Review: 2021.11.28 before G VO
+
+/*
+這次嘗試用了 direc = (direc + 1) % 4 的寫法
+但缺點是要改變原陣列，不然在判斷走過沒那邊好麻煩 (雖然應該還是有辦法辣)
+*/
+
+class Solution {
+public:
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+        vector<int> ans;
+        int rSize = matrix.size(), cSize = matrix[0].size();
+        int direc = 0; // right
+        //          1  // down
+        //          2  // left
+        //          3. // up
+        int dr[4] = {0, 1, 0, -1};
+        int dc[4] = {1, 0, -1, 0};
+        int r = 0, c= 0 ;
+        for(int i = 0; i < rSize * cSize; i++)  {
+            
+            ans.push_back(matrix[r][c]);
+            matrix[r][c] = -10000;
+            
+            int nr = r + dr[direc],
+                nc = c + dc[direc];
+            
+            // when some condition is fulfilled, change the direction
+            if(nr >= rSize || nr < 0 ||
+               nc >= cSize || nc < 0 ||
+               matrix[nr][nc] == -10000) {
+                direc = (direc + 1) % 4;
+            } 
+            r = r + dr[direc];
+            c = c + dc[direc];
+        }
+        return ans;
+    }
+};
+
+/*
+Runtime: 0 ms, faster than 100.00% of C++ online submissions for Spiral Matrix.
+Memory Usage: 6.8 MB, less than 71.57% of C++ online submissions for Spiral Matrix.
+*/
