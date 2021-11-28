@@ -30,3 +30,43 @@ public:
 Runtime: 96 ms, faster than 18.49% of C++ online submissions for Combination Sum.
 Memory Usage: 25.1 MB, less than 21.79% of C++ online submissions for Combination Sum.
 */
+
+
+//***************************************************************************//
+// Review: 2021.11.28 before G VO
+
+// backtracking
+
+class Solution {
+    vector<int> nums;
+    vector<vector<int>> ans;
+public:
+    void comb(int c, vector<int>& cands, int target) {
+        if(target == 0) {
+            ans.push_back(nums);
+            return;
+        }
+        if(c >= cands.size())
+            return;
+        int i;
+        for(i = 0; target - i * cands[c] >= 0; i++) {
+            comb(c + 1, cands, target - i * cands[c]);
+            nums.push_back(cands[c]);
+        }
+        i--;
+        while(i >= 0) {
+            nums.pop_back();
+            i--;
+        }
+    }
+    
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        comb(0, candidates, target);
+        return ans;
+    }
+};
+
+/*
+Runtime: 8 ms, faster than 69.97% of C++ online submissions for Combination Sum.
+Memory Usage: 11.2 MB, less than 46.87% of C++ online submissions for Combination Sum.
+*/
