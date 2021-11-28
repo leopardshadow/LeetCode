@@ -11,6 +11,14 @@
 確實從他的題目敘述裡面：n <= 10^5, k <= 10^5 可以知道可能會超過 int32 的表示範圍
 INT_MAX 只有 2,147,483,647
 一開始沒注意到
+---
+
+這題一開始卡住，後來才發現是 signed / unsigned 的問題
+the implicit casting of signed to unsigned leads to some non-intuitive behavior
+
+https://github.com/leopardshadow/CSAPP-Lab/blob/main/ch2/unsigned2signed.c
+
+一句話：unsugned 不要隨便跟 signed 比較、加、減，要的話請自己轉型
 */
 
 class Solution {
@@ -23,12 +31,11 @@ public:
         for(int i = 0; i < 2*k + 1 && i < nums.size(); i++)
             sum += nums[i];
         
-        for(int i = k; i < ans.size() - k && i < ans.size(); i++) {
+        for(int i = k; i < (int)ans.size() - k; i++) {
             ans[i] = sum / (2 * k + 1);
             sum -= nums[i-k];
             sum += nums[i+k+1];
         }
-        
         return ans;
     }
 };
