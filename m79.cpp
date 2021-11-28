@@ -4,15 +4,19 @@ public:
     vector<vector<bool>> visited;
     
     int direc[5] = {0, 1, 0, -1, 0};
+    
+    // enter point
     bool exist(vector<vector<char>>& board, string word) {
         
         int rSize = board.size(),
             cSize = board[0].size();
         
+        // init visted matrix
         vector<bool> emptyRow(cSize, false);
         for(int r = 0; r < rSize; r++)
             visited.push_back(emptyRow);
         
+        // every points take turn to be the start
         for(int r = 0; r < rSize; r++) {
             for(int c = 0; c < cSize; c++) {
                 visited[r][c] = true;
