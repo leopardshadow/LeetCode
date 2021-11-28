@@ -27,3 +27,43 @@ public:
 Runtime: 0 ms, faster than 100.00% of C++ online submissions for Search in Rotated Sorted Array.
 Memory Usage: 11.1 MB, less than 29.52% of C++ online submissions for Search in Rotated Sorted Array.
 */
+
+
+//***************************************************************************//
+// Review: 2021.11.28 before G VO
+
+// iterative
+
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        int l = 0, r = nums.size() - 1, m;
+        while(l <= r) {
+            m = (l + r) / 2;
+            if(nums[m] == target)
+                return m;
+            // l - m is sorted in ascending order
+            else if(nums[l] <= nums[m]) {
+                // target is between l - m
+                if(target <= nums[m] && target >= nums[l])
+                    r = m - 1;
+                else
+                    l = m + 1;
+            }
+            // m - r is sorted in ascending order
+            else {
+                // target is between m - r
+                if(target >= nums[m] && target <= nums[r])
+                    l = m + 1;
+                else
+                    r = m - 1;
+            }
+        }
+        return -1;
+    }
+};
+
+/*
+Runtime: 0 ms, faster than 100.00% of C++ online submissions for Search in Rotated Sorted Array.
+Memory Usage: 11.1 MB, less than 74.83% of C++ online submissions for Search in Rotated Sorted Array.
+*/
