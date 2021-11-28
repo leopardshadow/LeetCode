@@ -36,3 +36,37 @@ public:
         return ans;
     }
 };
+
+//***************************************************************************//
+// Review: 2021.11.28 before G VO
+
+// sliding window
+/* 
+嘗試用 bitmap 的寫法
+沒注意到除了英文字之外，還包括空白、數字和特殊符號 @@
+但概念大致上是對的
+*/
+
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        unsigned int num = 0;
+        int l = 0, r = 0;
+        int maxLen = 0;
+        while(r < s.length()) {
+            if(!(num & (1 << (s[r] - 'a')))) {
+                num |= (1 << (s[r] - 'a'));
+            }
+            else{
+                while(l < s.length() && s[l] != s[r]) {
+                    num &= ~(1 << (s[l] - 'a'));
+                    l++;
+                }
+                l++;
+            }
+            maxLen = max(maxLen, r - l + 1);
+            r++;
+        }
+        return maxLen;
+    }
+};
