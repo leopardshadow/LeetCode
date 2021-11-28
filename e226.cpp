@@ -34,6 +34,27 @@ Runtime: 0 ms, faster than 100.00% of C++ online submissions for Invert Binary T
 Memory Usage: 9.8 MB, less than 5.83% of C++ online submissions for Invert Binary Tree.
 */
 
+//***************************************************************************//
+// Review: 2021.11.28 before G VO
+
+class Solution {
+public:
+    TreeNode* invertTree(TreeNode* root) {
+        if(!root)
+            return NULL;
+        TreeNode *left = root->left,
+                 *right = root->right;
+        root->left = invertTree(right);
+        root->right = invertTree(left);
+        return root;
+    }
+};
+
+/*
+Runtime: 4 ms, faster than 50.45% of C++ online submissions for Invert Binary Tree.
+Memory Usage: 9.8 MB, less than 38.77% of C++ online submissions for Invert Binary Tree.
+*/
+
 
 // iterative
 class Solution {
