@@ -66,3 +66,42 @@ public:
 Runtime: 4 ms, faster than 75.79% of C++ online submissions for Binary Tree Level Order Traversal.
 Memory Usage: 12.5 MB, less than 61.82% of C++ online submissions for Binary Tree Level Order Traversal.
 */
+
+
+
+
+//***************************************************************************//
+// Review: 2021.11.28 before G VO
+
+class Solution {
+public:
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<vector<int>> ans;
+        if(!root)
+            return ans;
+        queue<TreeNode*> q;
+        q.push(root);
+        
+        while(!q.empty()) {
+            
+            ans.push_back(vector<int>());
+
+            int levelSize = q.size();
+            for(int i = 0; i < levelSize; i++) {
+                TreeNode *node = q.front();
+                q.pop();
+                ans.back().push_back(node->val);
+                if(node->left)
+                    q.push(node->left);
+                if(node->right)
+                    q.push(node->right);
+            }
+        }
+        return ans;
+    }
+};
+
+/*
+Runtime: 8 ms, faster than 35.08% of C++ online submissions for Binary Tree Level Order Traversal.
+Memory Usage: 12.3 MB, less than 96.21% of C++ online submissions for Binary Tree Level Order Traversal.
+*/
