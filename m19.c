@@ -38,3 +38,36 @@ struct ListNode* removeNthFromEnd(struct ListNode* head, int n){
 Runtime: 4 ms, faster than 54.37% of C online submissions for Remove Nth Node From End of List.
 Memory Usage: 6 MB, less than 8.63% of C online submissions for Remove Nth Node From End of List.
 */
+
+
+//***************************************************************************//
+// Review: 2021.11.28 before G VO
+
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode *node1 = head, *node2 = head;
+        ListNode *prev;
+        while(n) {
+            node2 = node2->next;
+            n--;
+        }
+        while(node2) {
+            prev = node1;
+            node1 = node1->next;
+            node2 = node2->next;
+        }
+        // new we'd like to remove node1
+        if(node1 == head)
+            head = head->next;
+        else
+            prev->next = node1->next;
+        delete node1;
+        return head;
+    }
+};
+
+/*
+Runtime: 4 ms, faster than 79.05% of C++ online submissions for Remove Nth Node From End of List.
+Memory Usage: 10.8 MB, less than 31.77% of C++ online submissions for Remove Nth Node From End of List.
+*/
