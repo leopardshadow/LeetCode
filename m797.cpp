@@ -6,7 +6,7 @@ class Solution {
     vector<vector<int>> ans;
     vector<int> path;
 public:
-    void dfs(int start, int dst, vector<vector<int>>& graph) {
+    void dfs(int start, int &dst, vector<vector<int>>& graph) {
         if(start == dst) {
             ans.push_back(path);
             return;
@@ -40,6 +40,6 @@ public:
 };
 
 /*
-Runtime: 21 ms, faster than 45.51% of C++ online submissions for All Paths From Source to Target.
-Memory Usage: 11.9 MB, less than 68.00% of C++ online submissions for All Paths From Source to Target.
+Runtime: 11 ms, faster than 84.21% of C++ online submissions for All Paths From Source to Target.
+Memory Usage: 11.8 MB, less than 69.28% of C++ online submissions for All Paths From Source to Target.
 */
