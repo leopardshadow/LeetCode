@@ -1,6 +1,6 @@
 /*
 我是利用 BST 左邊所有節點都比這個節點小，右邊所有節點都比這個節點大，這樣遞迴往下
-看到也有人是把他 in-order 的 traverse 過一次，他的印出來順序剛好會是排序過的，只要檢查這點就好了
+看到也有人是把他 in-order 的 traverse 過一次，他的印出來順序剛好會是排序過的，只要檢查這點就好了 (補充：這樣比較簡單辣)
 
 我有特別處理值在 INT_MIN 和 INT_MAX 的 case，多寫了 shouldBigger 和 shouldSmaller
 如果他的 range 都不在那麼邊邊，只要 inRange 就好了
@@ -50,4 +50,49 @@ public:
 /*
 Runtime: 4 ms, faster than 98.93% of C++ online submissions for Validate Binary Search Tree.
 Memory Usage: 21.7 MB, less than 30.44% of C++ online submissions for Validate Binary Search Tree.
+*/
+
+//***************************************************************************//
+// Review: 2021.11.28 before G VO
+
+/*
+上次寫的作法好麻煩喔，請善用 BST inorder traversal 會是排序好的性質
+如果他不是 BST，那麼 inorder traversal 就不會是 sorted 的
+---
+Q: 這是雙向箭頭嗎？有沒有 inorder traversal 會是排序好的，但不是 BST 的 binary tree
+*/
+
+class Solution {
+    TreeNode *prevNode;
+    bool isValid;
+public:
+    void inorder(TreeNode *node) {
+        if(!node)
+            return;
+        
+        inorder(node->left);
+        
+        if(prevNode) {
+            if(prevNode->val >= node->val) {
+                isValid = false;
+                return;   // if it is already not valid, no need to check the rest
+            }
+        }
+        prevNode = node;
+        
+        inorder(node->right);
+    }
+    
+    bool isValidBST(TreeNode* root) {
+        prevNode = NULL;
+        isValid = true;
+        inorder(root);
+        return isValid;
+    }
+};
+
+// 剛好都 89.64% 耶 XDD
+/*
+Runtime: 8 ms, faster than 89.64% of C++ online submissions for Validate Binary Search Tree.
+Memory Usage: 21.6 MB, less than 89.64% of C++ online submissions for Validate Binary Search Tree.
 */
