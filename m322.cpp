@@ -1,4 +1,8 @@
 /*
+Nice solution at the bottom
+*/
+
+/*
 Record the fewest number of coins to make i 
 */
 
@@ -117,3 +121,30 @@ TLE without memoization
 Runtime: 72 ms, faster than 72.33% of C++ online submissions for Coin Change.
 Memory Usage: 15 MB, less than 23.86% of C++ online submissions for Coin Change.
 */
+
+
+//***************************************************************************//
+// Review: 2021.11.29 before G VO
+
+
+/*
+其實就是背包問題的變形
+認真看了背包問題題型之後，有種豁然開朗的感覺 XDD
+*/
+
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        vector<int> dp(amount + 1, INT_MAX);
+        dp[0] = 0;
+        for(int c : coins) {
+            for(int i = c; i <= amount; i++) {
+                if(dp[i - c] != INT_MAX) // need this if, otherwise integer overflow
+                    dp[i] = min(dp[i], dp[i - c] + 1);
+            }
+        }
+        if(dp[amount] == INT_MAX)
+            return -1;
+        return dp[amount];
+    }
+};
