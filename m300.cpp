@@ -43,3 +43,27 @@ public:
     }
 };
 
+
+
+
+//***************************************************************************//
+// Review: 2021.11.29 before G VO
+
+/*
+錯誤的邏輯
+*/
+
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        deque<int> st;
+        st.push_back(nums[0]);
+        for(int i = 1; i < nums.size(); i++) {
+            if(nums[i] > st.back())
+                st.push_back(nums[i]);
+            else if(nums[i] < st.back() && (st.size() <= 1 || nums[i] > st[st.size() - 2]))
+                st.back() = nums[i];
+        }
+        return st.size();
+    }
+};
