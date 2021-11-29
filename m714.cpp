@@ -5,6 +5,9 @@
 只要把 fee 減掉的部分放在加 profits 那邊就好
 
 話說這樣如果考個 cooldown + transaction fee 也可以~
+
+bought[i] 表示買了第 i 天結束時，手上「有」股票
+sold[i] 則表示買了第 i 天結束時，手上「沒有」股票
 */
 
 class Solution {
