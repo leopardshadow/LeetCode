@@ -55,3 +55,50 @@ public:
 Runtime: 1300 ms, faster than 12.42% of C++ online submissions for Target Sum.
 Memory Usage: 9.2 MB, less than 57.34% of C++ online submissions for Target Sum.
 */
+
+
+//***************************************************************************//
+// Review: 2021.11.29 before G VO
+
+/*
+天阿，超酷的欸 這題和
+* 416. Partition Equal Subset Sum
+* 1049. Last Stone Weight II
+都超級類似的
+
+  sum  = a + b
+target = a - b
+----------------
+a = (sum + target) / 2
+if a (sum + target) is odd, we cannot construct such a and b, no way
+also, a should be positive, if a < 0, there no way to construct that (target too negative)
+*/
+
+class Solution {
+public:
+    int findTargetSumWays(vector<int>& nums, int target) {
+        int sum = 0;
+        for(int n : nums)
+            sum += n;
+        int a = (sum + target);
+        if(a % 2 == 1 || a < 0)  // a == 1 is covered below
+            return 0;
+        else
+            a /= 2;
+        
+        vector<int> dp(a + 1, 0);
+        dp[0] = 1;
+        for(int n : nums) {
+            for(int w = a; w >= n; w--) {
+                dp[w] += dp[w - n];
+            }
+        }
+        return dp[a];
+    }
+};
+
+/*
+Runtime: 8 ms, faster than 90.74% of C++ online submissions for Target Sum.
+Memory Usage: 9.4 MB, less than 45.77% of C++ online submissions for Target Sum.
+*/
+
