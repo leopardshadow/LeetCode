@@ -137,3 +137,35 @@ public:
 Runtime: 0 ms, faster than 100.00% of C++ online submissions for House Robber.
 Memory Usage: 7.7 MB, less than 72.71% of C++ online submissions for House Robber.
 */
+
+
+
+//***************************************************************************//
+// 2021.12.1 before G VO
+
+// 2021.12.1
+
+/*
+今天的每日題是他欸，我昨天才寫完她的變形版本: 337. House Robber III
+*/
+
+class Solution {
+public:
+    int rob(vector<int>& nums) {
+        //        rob. / don't rob
+        vector<pair<int, int>> profits(nums.size());
+        profits[0].first = nums[0];
+        profits[0].second = 0;
+        for(int i = 1; i < nums.size(); i++) {
+            profits[i] = {
+                nums[i] + profits[i-1].second, // if we rob this, we cannot rob previos one
+                max(profits[i-1].first, profits[i-1].second) }; // if we don't rob this, we can either rob / not rob the previous one
+        }
+        return max(profits.back().first, profits.back().second);
+    }
+};
+
+/*
+Runtime: 0 ms, faster than 100.00% of C++ online submissions for House Robber.
+Memory Usage: 8 MB, less than 6.27% of C++ online submissions for House Robber.
+*/
