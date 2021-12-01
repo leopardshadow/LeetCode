@@ -137,3 +137,41 @@ public:
 Runtime: 17 ms, faster than 15.63% of C++ online submissions for Best Time to Buy and Sell Stock with Cooldown.
 Memory Usage: 13.6 MB, less than 5.13% of C++ online submissions for Best Time to Buy and Sell Stock with Cooldown.
 */
+
+
+
+//***************************************************************************//
+// 2021.12.1 before G VO
+
+/*
+試了一下三個狀態的寫法，覺得這篇說得滿清楚的：https://blog.csdn.net/zjuPeco/article/details/76468185
+把狀態轉移畫出來就結束惹
+既然 i 時刻只和前一時刻 (i-1) 有關，其實也不用一整條狀態的 vector
+*/
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        
+        vector<int> s0(prices.size()),
+                    s1(prices.size()),
+                    s2(prices.size());
+        
+        s0[0] = 0;
+        s1[0] = -prices[0];
+        s2[0] = 0;
+        
+        for(int i = 1; i < prices.size(); i++) {
+            s0[i] = max(s0[i-1], s2[i-1]);
+            s1[i] = max(s1[i-1], s0[i-1] - prices[i]);
+            s2[i] = s1[i] + prices[i];
+        }
+        
+        return max(s0.back(), s2.back());
+    }
+};
+
+/*
+Runtime: 4 ms, faster than 69.36% of C++ online submissions for Best Time to Buy and Sell Stock with Cooldown.
+Memory Usage: 11.3 MB, less than 47.30% of C++ online submissions for Best Time to Buy and Sell Stock with Cooldown.
+*/
