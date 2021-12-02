@@ -49,3 +49,8 @@ struct ListNode* oddEvenList(struct ListNode* head) {
 Runtime: 4 ms, faster than 94.05% of C online submissions for Odd Even Linked List.
 Memory Usage: 6.8 MB, less than 100.00% of C online submissions for Odd Even Linked List.
 */
+
+/*
+Runtime: 4 ms, faster than 91.43% of C online submissions for Odd Even Linked List.
+Memory Usage: 6.8 MB, less than 72.50% of C online submissions for Odd Even Linked List.
+*/
