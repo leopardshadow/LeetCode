@@ -78,3 +78,31 @@ public:
 Runtime: 3 ms, faster than 85.44% of C++ online submissions for Maximum Product Subarray.
 Memory Usage: 11.6 MB, less than 90.01% of C++ online submissions for Maximum Product Subarray.
 */
+
+
+//***************************************************************************//
+// 2021.12.3 剛結束 BQ 的 me
+
+// 2021.12.3
+
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) {
+        int nmax = nums[0],
+            nmin = nums[0],
+            ans = nums[0];
+        for(int i = 1; i < nums.size(); i++) {
+            if(nums[i] < 0)
+                swap(nmax, nmin);
+            nmax = max(nums[i], nums[i] * nmax);
+            nmin = min(nums[i], nums[i] * nmin);
+            ans = max(ans, nmax);
+        }
+        return ans;
+    }
+};
+
+/*
+Runtime: 4 ms, faster than 81.49% of C++ online submissions for Maximum Product Subarray.
+Memory Usage: 11.7 MB, less than 52.62% of C++ online submissions for Maximum Product Subarray.
+*/
