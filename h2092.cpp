@@ -98,3 +98,74 @@ public:
         return ans;
     }
 };
+
+
+/*
+寫了簡單版本的 union find，但還是 TLE QQ
+看來要加上 map 了
+*/
+
+class UnionFind {
+    vector<int> nodes;
+    int n;
+public:
+    UnionFind(int n) : nodes(n) {
+        this->n = n;
+        for(int i = 0; i < n; i++) {
+            nodes[i] = i;
+        }
+    }
+    int getRoot(int i) {
+        return nodes[i];
+    }
+    // change x's value to y's
+    void connect(int x, int y) {
+        int rootX = nodes[x],
+            rootY = nodes[y];
+        for(int i = 0; i < n; i++) {
+            if(nodes[i] == rootY)
+                nodes[i] = rootX;
+        }
+    }
+    bool isConnected(int x, int y) {
+        return nodes[x] == nodes[y];
+    }
+    void reset() {
+        for(int i = 0; i < n; i++) {
+            if(!isConnected(0, i))
+                nodes[i] = i;
+        }
+    }
+};
+
+class Solution {
+public:
+    vector<int> findAllPeople(int n, vector<vector<int>>& meetings, int firstPerson) {
+        
+        // sort the meetings by their time
+        sort(meetings.begin(), meetings.end(), [](vector<int> &a, vector<int> &b){
+            return a[2] < b[2];
+        });
+        
+        UnionFind uf(n);
+        
+        uf.connect(0, firstPerson);
+        uf.connect(meetings[0][0], meetings[0][1]);
+        
+        for(int i = 1; i < meetings.size(); i++) {
+                        
+            if(meetings[i][2] != meetings[i-1][2]) {
+                uf.reset();
+            }
+            
+            uf.connect(meetings[i][0], meetings[i][1]);
+        }
+        
+        vector<int> ans;
+        for(int i = 0; i < n; i++) {
+            if(uf.isConnected(0, i))
+                ans.push_back(i);
+        }
+        return ans;
+    }
+};
