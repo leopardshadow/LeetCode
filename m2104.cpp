@@ -1,3 +1,5 @@
+// Weekly Contest 271
+
 /*
 居然 data type 是 long long，好少遇到喔
 ---
