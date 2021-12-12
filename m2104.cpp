@@ -21,3 +21,8 @@ public:
         return ans;
     }
 };
+
+/*
+Runtime: 171 ms, faster than 9.09% of C++ online submissions for Sum of Subarray Ranges.
+Memory Usage: 10.5 MB, less than 18.18% of C++ online submissions for Sum of Subarray Ranges.
+*/
