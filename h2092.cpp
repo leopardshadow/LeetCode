@@ -111,7 +111,9 @@ disjoint set 優化：
 1. path compression
 2. union by rank
 ---
-(感覺在面試寫出有 path compression 的就好w，rank 好容易錯的感覺)
+~~(感覺在面試寫出有 path compression 的就好w，rank 好容易錯的感覺)~~
+其實也還好，就只是判斷一下 x 和 y 誰比較大，讓大的吃下小的，要是都一樣，那 rank 無可避免地會 +1
+除了一開始把大家 rank 都設成 1 之外，就只有這時候會碰到 rank (估算值，path compression 時也會動到，但大家忽略不計)
 ---
 但即使這樣，還是會 TLE，我讓 reset 那邊不要全部跑過，而是用一個 vector toReset 紀錄才跑出 AC
 
@@ -141,18 +143,18 @@ public:
         int rootX = find(x),
             rootY = find(y);
         nodes[rootX] = rootY;
-//         if(rootX != rootY) {
-//             if (ranks[rootX] > ranks[rootY]) {
-//                 nodes[rootY] = rootX;
-//             } 
-//             else if(ranks[rootX] < ranks[rootY]) {
-//                 nodes[rootX] = rootY;
-//             } 
-//             else {
-//                 nodes[rootY] = rootX;
-//                 ranks[rootX] += 1;
-//             }
-//         }
+        if(rootX != rootY) {
+            if (ranks[rootX] > ranks[rootY]) {
+                nodes[rootY] = rootX;
+            } 
+            else if(ranks[rootX] < ranks[rootY]) {
+                nodes[rootX] = rootY;
+            } 
+            else {
+                nodes[rootY] = rootX;
+                ranks[rootX] += 1;
+            }
+        }
         toReset.push_back(x);
         toReset.push_back(y);
     }
