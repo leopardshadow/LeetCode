@@ -1,5 +1,11 @@
 // Hint: DP
 
+/*
+這題原題可以從 wordDict 取零或多個 word 來使用，因此可以很簡單的用 DP 來解
+但如果改成最多只能取用一次就比較麻煩了 (0-1 背包問題 vs. 無限背包問題 ?)
+我嘗試用 DFS 解原題，但是會 TLE
+*/
+
 class Solution {
 public:
     bool wordBreak(string s, vector<string>& wordDict) {
@@ -101,3 +107,24 @@ public:
 Runtime: 9 ms, faster than 61.68% of C++ online submissions for Word Break.
 Memory Usage: 7.6 MB, less than 96.06% of C++ online submissions for Word Break.
 */
+
+// 嘗試用 DFS
+
+class Solution {
+    bool solve(const string &s, int start, vector<string>& wordDict) {
+        
+        if(s.substr(start) == "")
+            return true;
+        
+        for(string w : wordDict) {
+            if(s.substr(start, w.length()) == w)
+                if(solve(s, start+w.length(), wordDict))
+                    return true;
+        }
+        return false;
+    }
+public:
+    bool wordBreak(string s, vector<string>& wordDict) {
+        return solve(s, 0, wordDict);        
+    }
+};
