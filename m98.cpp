@@ -96,3 +96,38 @@ public:
 Runtime: 8 ms, faster than 89.64% of C++ online submissions for Validate Binary Search Tree.
 Memory Usage: 21.6 MB, less than 89.64% of C++ online submissions for Validate Binary Search Tree.
 */
+
+
+
+
+
+//******************************************************************************//
+// 12.29 - Just Before A VO
+
+class Solution {
+    TreeNode *prev;
+    bool inorder(TreeNode *node) {
+        
+        if(!node)
+            return true;
+        
+        if(!inorder(node->left))
+            return false;
+        
+        if(prev && prev->val >= node->val)
+            return false;
+        prev = node;
+
+        return inorder(node->right);
+    }
+public:
+    bool isValidBST(TreeNode* root) {
+        prev = NULL;
+        return inorder(root);
+    }
+};
+
+/*
+Runtime: 16 ms, faster than 28.63% of C++ online submissions for Validate Binary Search Tree.
+Memory Usage: 21.7 MB, less than 30.33% of C++ online submissions for Validate Binary Search Tree.
+*/
