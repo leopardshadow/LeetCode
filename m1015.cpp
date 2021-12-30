@@ -46,3 +46,34 @@ public:
 Runtime: 9 ms, faster than 34.45% of C++ online submissions for Smallest Integer Divisible by K.
 Memory Usage: 7.8 MB, less than 25.21% of C++ online submissions for Smallest Integer Divisible by K.
 */
+
+
+
+
+//******************************************************************************//
+// 優化版
+
+class Solution {
+public:
+    int smallestRepunitDivByK(int k) {
+                        
+        int r = 1, cnt = 1;
+        vector<bool> appear(k, false);
+        
+        appear[r] = true;
+        
+        while(r % k != 0) {
+            cnt++;
+            r = (r * 10 + 1) % k;
+            if(appear[ r ])
+                return -1;
+            appear[ r ] = true;
+        }
+        return cnt;
+    }
+};
+
+/*
+Runtime: 0 ms, faster than 100.00% of C++ online submissions for Smallest Integer Divisible by K.
+Memory Usage: 6.4 MB, less than 27.73% of C++ online submissions for Smallest Integer Divisible by K.
+*/
