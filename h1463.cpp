@@ -59,3 +59,45 @@ public:
 Runtime: 63 ms, faster than 45.16% of C++ online submissions for Cherry Pickup II.
 Memory Usage: 9.9 MB, less than 75.00% of C++ online submissions for Cherry Pickup II.
 */
+
+
+//******************************************************************************//
+// 想嘗試 iterative 寫法的屍體
+class Solution {
+public:
+    int cherryPickup(vector<vector<int>>& grid) {
+        
+        int R = grid.size(),
+            C = grid[0].size();
+        
+        vector<vector<int>> dp0(C, vector<int>(C, 0));
+        vector<vector<int>> dp1(C, vector<int>(C, 0));
+        
+        
+        int ans = 0;
+        
+        vector<vector<int>> &prev = dp0;
+        vector<vector<int>> &curr = dp1;
+        
+        prev[0][C-1] = grid[0][0] + grid[0][C-1];
+            
+        for(int r = 1; r < R; r++) {
+                
+            for(int c1 = 0; c1 < C; c1++) {
+                for(int c2 = 0; c2 < C; c2++) {
+                    
+                    curr[c1][c2] = max({
+                        c1 - 1 >= 0 ? prev[c1-1][c2] : 0,
+                        c1 + 1 < C ? prev[c1+1][c2] : 0,
+                        c1 - 1 >= 0 ? prev[c1]
+                    });
+                }
+            }
+
+            prev = (r % 2 == 0 ? dp0 : dp1);
+            curr = (r % 2 == 0 ? dp1 : dp0);
+        }
+        
+        return ans;
+    }
+};
