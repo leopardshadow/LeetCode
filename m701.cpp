@@ -68,3 +68,27 @@ public:
 Runtime: 80 ms, faster than 90.55% of C++ online submissions for Insert into a Binary Search Tree.
 Memory Usage: 57 MB, less than 48.05% of C++ online submissions for Insert into a Binary Search Tree.
 */
+
+
+// 沒有偷看之前寫的，但寫法跟之前幾乎一模一樣 XD
+// 2022.1.12
+
+class Solution {
+public:
+    TreeNode* insertIntoBST(TreeNode* root, int val) {
+        if(!root)
+            return new TreeNode(val);
+        else if(root->val > val)
+            root->left = insertIntoBST(root->left, val);
+        else
+            root->right = insertIntoBST(root->right, val);
+        // root->val == val will not happen
+        return root;
+    }
+};
+
+
+/*
+Runtime: 113 ms, faster than 33.03% of C++ online submissions for Insert into a Binary Search Tree.
+Memory Usage: 56.8 MB, less than 80.92% of C++ online submissions for Insert into a Binary Search Tree.
+*/
