@@ -2,7 +2,7 @@
 // 這週 Weekly 的題目，沒參加，但還是寫寫看
 
 /*
-無腦照刻會 TLE QQ
+無腦照刻會 TLE QQ 
 題目的 hint: rolling hash
 */
 
