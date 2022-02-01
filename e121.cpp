@@ -96,3 +96,26 @@ public:
 Runtime: 124 ms, faster than 45.11% of C++ online submissions for Best Time to Buy and Sell Stock.
 Memory Usage: 93.4 MB, less than 52.55% of C++ online submissions for Best Time to Buy and Sell Stock.
 */
+
+
+//***************************************************************************//
+// 2022.2.1
+/*
+印象中這是我寫 Leetcode 的第一題XD
+之前好像都是從尾巴走，但從頭走的話 code 比較精簡!
+*/
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int minP = INT_MAX, ans = 0;
+        for(int i = 0; i < prices.size(); i++) {
+            ans = max(ans, prices[i] - minP);
+            minP = min(minP, prices[i]);
+        }
+        return ans;
+    }
+};
+/*
+Runtime: 209 ms, faster than 30.38% of C++ online submissions for Best Time to Buy and Sell Stock.
+Memory Usage: 93.3 MB, less than 90.32% of C++ online submissions for Best Time to Buy and Sell Stock.
+*/
