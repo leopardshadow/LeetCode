@@ -57,3 +57,7 @@ Memory Usage: 13.6 MB, less than 39.66% of C++ online submissions for Merge k So
 Runtime: 20 ms, faster than 88.09% of C++ online submissions for Merge k Sorted Lists.
 Memory Usage: 13.4 MB, less than 59.20% of C++ online submissions for Merge k Sorted Lists.
 */
+
+
+// 2022.2.5
+// 上次寫是面試前，這次再遇到 ……
