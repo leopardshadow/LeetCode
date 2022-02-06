@@ -2,7 +2,7 @@
 // 這週的 contest，沒參加，但是 ... ww
 
 /*
-G
+G 
 */
 
 class Solution {
