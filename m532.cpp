@@ -8,25 +8,16 @@
 但是 k = 0 需要知道有 1 個還是 n 個
 如果 k != 0，其實用 set 就好
 ---
-因為要求 unique，所以我統一從小的來看：讓 n 去找 n + k
-找的部分就用 map 惹
-*/
-
-
-// 2022.2.9
-
-/*
-要特別處理 k = 0 的情況
----
-注意他題目要求的是 unique pair，一開始會想用 set 而不是 map
-但是 k = 0 需要知道有 1 個還是 n 個
----
 因為要求 unique，所以我統一從小的來看：讓 n 去對到 n + k
 ---
-if(m[it.first + k] > 0)
+(1) if(m[it.first + k] > 0)
 vs.
-if(m.find(it.first + k) != m.end())
+(2) if(m.find(it.first + k) != m.end())
 哪裡不一樣？？？
+---
+Ans:
+(1) 會 insert，邊跑 loop 邊 insert 要小心，如果同樣的 code 改成 map 就會 TLE，他一直 insert 新的 (with default constructor)，新的又會繼續 insert 新的
+雖然用 [] 取 map 的值很方便，但感覺還是 find 比較安全！！
 */
 
 class Solution {
