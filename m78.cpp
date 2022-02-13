@@ -76,4 +76,34 @@ public:
 Runtime: 0 ms, faster than 100.00% of C++ online submissions for Subsets.
 Memory Usage: 7 MB, less than 83.01% of C++ online submissions for Subsets.
 */
+
+
+
+// 2022.2.13
+
+/*
+取 / 不取
+*/
+
+class Solution {
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+        
+        vector<vector<int>> ans;
+        
+        for(int i = 0; i < (1 << nums.size()); i++) {
+            vector<int> ss;
+            for(int j = 0; j < nums.size(); j++)
+                if(i & (1 << j))
+                    ss.push_back(nums[j]);
+            ans.push_back(ss);
+        }
+        
+        return ans;
+    }
+};
+
+/*
+Runtime: 0 ms, faster than 100.00% of C++ online submissions for Subsets.
+Memory Usage: 7.2 MB, less than 53.44% of C++ online submissions for Subsets.
 */
