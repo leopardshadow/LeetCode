@@ -62,3 +62,20 @@ public:
 Runtime: 27 ms, faster than 6.13% of C++ online submissions for Maximum Depth of Binary Tree.
 Memory Usage: 18.9 MB, less than 14.35% of C++ online submissions for Maximum Depth of Binary Tree.
 */
+
+
+
+// 2022.2.14 情人節耶
+
+class Solution {
+public:
+    int maxDepth(TreeNode* root) {
+        if(!root) return 0;
+        return max(maxDepth(root->right), maxDepth(root->left)) + 1;
+    }
+};
+
+/*
+Runtime: 4 ms, faster than 95.27% of C++ online submissions for Maximum Depth of Binary Tree.
+Memory Usage: 18.9 MB, less than 56.35% of C++ online submissions for Maximum Depth of Binary Tree.
+*/
