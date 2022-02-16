@@ -42,3 +42,27 @@ struct ListNode* swapPairs(struct ListNode* head){
 Runtime: 0 ms, faster than 100.00% of C online submissions for Swap Nodes in Pairs.
 Memory Usage: 6 MB, less than 23.22% of C online submissions for Swap Nodes in Pairs.
 */
+
+
+
+
+// 2022.2.16
+
+class Solution {
+public:
+    ListNode* swapPairs(ListNode* head) {
+        if(!head)
+            return NULL;
+        ListNode *p = head;
+        while(p && p->next) {
+            swap(p->val, p->next->val);
+            p = p->next->next;
+        }
+        return head;
+    }
+};
+
+/*
+Runtime: 0 ms, faster than 100.00% of C++ online submissions for Swap Nodes in Pairs.
+Memory Usage: 7.6 MB, less than 55.41% of C++ online submissions for Swap Nodes in Pairs.
+*/
