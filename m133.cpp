@@ -97,3 +97,33 @@ public:
 Runtime: 12 ms, faster than 10.57% of C++ online submissions for Clone Graph.
 Memory Usage: 8.6 MB, less than 81.25% of C++ online submissions for Clone Graph.
 */
+
+
+// 2022.2.23
+
+/*
+之前好像都是 BFS 的寫法，這次試試 DFS + recursion 的
+兩個行數差好多
+*/
+
+class Solution {
+    map<Node*, Node*> old2new;
+public:
+    Node* cloneGraph(Node* node) {
+        if(!node)
+            return NULL;
+        if(old2new.find(node) != old2new.end())
+            return old2new[node];
+        old2new[node] = new Node(node->val);
+        for(Node *neighbor : node->neighbors) {
+            old2new[node]->neighbors.push_back(cloneGraph(neighbor));
+        }
+        return old2new[node];
+    }
+};
+
+/*
+Runtime: 8 ms, faster than 65.22% of C++ online submissions for Clone Graph.
+Memory Usage: 9 MB, less than 23.69% of C++ online submissions for Clone Graph.
+*/
+
