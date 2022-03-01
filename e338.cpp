@@ -27,15 +27,11 @@ Memory Usage: 10.6 MB, less than 17.69% of C online submissions for Counting Bit
 */
 
 
-
-
-python -m grpc_tools.protoc -I../../protos --python_out=. --grpc_python_out=. ../../protos/helloworld.proto
-
-
+//******************************************************************************//
 // 2022.3.1
 
 /*
-這題之前寫過，但沒注意到有 Follow up 和 Hints =w=
+這題之前寫過，但好像沒注意到有 Follow up 和 Hints =w=
 ---
 把他列出來大概就可以發現規則，後面的數字可以由前面的數字決定
 ---
@@ -63,7 +59,6 @@ python -m grpc_tools.protoc -I../../protos --python_out=. --grpc_python_out=. ..
 ...
 */
 
-//******************************************************************************//
 class Solution {
 public:
     vector<int> countBits(int n) {
