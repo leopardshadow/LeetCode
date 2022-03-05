@@ -135,6 +135,9 @@ Memory Usage: 10 MB, less than 55.19% of C++ online submissions for Delete and E
 /*
 直接偷懶 submit 惹，很像 house robber 題
 ---
+補充一下 dp1, dp2 分別是 max(n-1), max(n-2)
+max(n) 表示的是從 0 到 n (index) 為止最大的 earnings
+---
 好難得今天是星期六但是 daily 題是 medium，而且居然是我寫過的！
 */
 
