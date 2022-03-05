@@ -128,3 +128,17 @@ public:
 Runtime: 4 ms, faster than 93.60% of C++ online submissions for Delete and Earn.
 Memory Usage: 10 MB, less than 55.19% of C++ online submissions for Delete and Earn.
 */
+
+
+
+// 2022.3.5
+/*
+直接偷懶 submit 惹，很像 house robber 題
+---
+好難得今天是星期六但是 daily 題是 medium，而且居然是我寫過的！
+*/
+
+/*
+Runtime: 7 ms, faster than 82.55% of C++ online submissions for Delete and Earn.
+Memory Usage: 9.6 MB, less than 73.02% of C++ online submissions for Delete and Earn.
+*/
