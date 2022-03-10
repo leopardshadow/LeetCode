@@ -110,3 +110,54 @@ public:
 Runtime: 78 ms, faster than 12.46% of C++ online submissions for Add Two Numbers.
 Memory Usage: 71.5 MB, less than 50.05% of C++ online submissions for Add Two Numbers.
 */
+
+
+
+
+/*
+這題測資滿大的，所以不用 / 和 % 對執行時間上應該是有幫助
+*/
+
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode *dummy_head = new ListNode(), *curr = dummy_head;
+        int carry = 0, sum;
+        while(l1 && l2) {
+            sum = l1->val + l2->val + carry;
+            if(sum > 9) {
+                sum -= 10;
+                carry = 1;
+            }
+            else {
+                carry = 0;
+            }
+            curr->next = new ListNode(sum);
+            curr = curr->next;
+            l1 = l1->next;
+            l2 = l2->next;
+        }
+        ListNode *l = (l1 ? l1 : l2);
+        while(l) {
+            sum = l->val + carry;
+            if(sum > 9) {
+                sum -= 10;
+                carry = 1;
+            }
+            else {
+                carry = 0;
+            }
+            curr->next = new ListNode(sum);
+            curr = curr->next;
+            l = l->next;
+        }
+        if(carry)
+            curr->next = new ListNode(carry);
+        return dummy_head->next;
+    }
+};
+
+/*
+Runtime: 34 ms, faster than 79.33% of C++ online submissions for Add Two Numbers.
+Memory Usage: 71.5 MB, less than 11.57% of C++ online submissions for Add Two Numbers.
+*/
