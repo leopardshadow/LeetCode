@@ -59,3 +59,54 @@ int main(int argc, char const *argv[])
 
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+//******************************************************************************//
+// 2022.3.10
+
+/*
+這週好像是 linked list 週
+---
+注意 carry 要加到什麼時候
+*/
+
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode *dummy_head = new ListNode(), *curr = dummy_head;
+        int carry = 0, sum;
+        while(l1 && l2) {
+            sum = l1->val + l2->val + carry;
+            carry = sum >= 10;
+            curr->next = new ListNode(sum % 10);
+            curr = curr->next;
+            l1 = l1->next;
+            l2 = l2->next;
+        }
+        ListNode *l = (l1 ? l1 : l2);
+        while(l) {
+            sum = l->val + carry;
+            carry = sum >= 10;
+            curr->next = new ListNode(sum % 10);
+            curr = curr->next;
+            l = l->next;
+        }
+        if(carry)
+            curr->next = new ListNode(carry);
+        return dummy_head->next;
+    }
+};
+
+/*
+Runtime: 78 ms, faster than 12.46% of C++ online submissions for Add Two Numbers.
+Memory Usage: 71.5 MB, less than 50.05% of C++ online submissions for Add Two Numbers.
+*/
