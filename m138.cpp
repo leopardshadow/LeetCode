@@ -50,3 +50,8 @@ public:
 Runtime: 4 ms, faster than 97.86% of C++ online submissions for Copy List with Random Pointer.
 Memory Usage: 11.5 MB, less than 8.26% of C++ online submissions for Copy List with Random Pointer.
 */
+
+
+// 2022.3.12
+// 今天是交大的 OpenHouse，好累、好熱，晚上看錶一萬兩千步惹
+// 今天的關鍵字是腳踏實地，因為自己都抽不到獎，HomePod mini
