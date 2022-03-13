@@ -3,7 +3,10 @@
 // 2022.3.13
 
 /*
-我用有點 topological sort 的感覺
+我用有點 topological sort 的感覺，從 r,c 指向 artifact
+---
+但後來發現不用這麼麻煩，因為他說 artifacts 不會重疊，所以只要用 array + counting 就好
+一組座標只會對到最多一個 artifact
 */
 
 class Solution {
