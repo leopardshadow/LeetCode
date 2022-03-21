@@ -3,6 +3,8 @@
 
 /*
 我用 interval merging 的方式來寫這一題~
+---
+雖然有用到 sort 乍看之下是 O(n log n)，但因為固定都是 26 個東西在排，所以這邊也是常數！
 */
 
 class Solution {
