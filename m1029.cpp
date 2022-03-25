@@ -41,3 +41,11 @@ public:
 Runtime: 4 ms, faster than 82.52% of C++ online submissions for Two City Scheduling.
 Memory Usage: 7.8 MB, less than 73.95% of C++ online submissions for Two City Scheduling.
 */
+
+
+// 2022.3.25
+// submit the smae code ><
+/*
+Runtime: 3 ms, faster than 90.96% of C++ online submissions for Two City Scheduling.
+Memory Usage: 7.8 MB, less than 94.48% of C++ online submissions for Two City Scheduling.
+*/
