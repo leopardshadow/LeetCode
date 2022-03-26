@@ -45,6 +45,16 @@ Memory Usage: 7.8 MB, less than 73.95% of C++ online submissions for Two City Sc
 
 // 2022.3.25
 // submit the smae code ><
+
+/*
+後來想想這題有種比較利益的感覺 (?)
+A 一小時能捕 6 隻魚或採 10 顆水果 ; B 一小時能能捕 2 隻魚或採 3 顆水果。
+雖然 A 不管在捕魚或採水果都能屌打 B，但比較利益告訴我們 A 如果和 B 合作，他們兩人合作的產出還是會比兩人單獨自幹總和多。
+A 可以專注在自己的專頁上
+---
+這裡也是同樣的感覺，不能直接依數字本身來比
+*/
+
 /*
 Runtime: 3 ms, faster than 90.96% of C++ online submissions for Two City Scheduling.
 Memory Usage: 7.8 MB, less than 94.48% of C++ online submissions for Two City Scheduling.
