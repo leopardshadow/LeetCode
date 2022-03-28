@@ -68,3 +68,8 @@ public:
 Runtime: 4 ms, faster than 89.33% of C++ online submissions for Search in Rotated Sorted Array II.
 Memory Usage: 14 MB, less than 30.26% of C++ online submissions for Search in Rotated Sorted Array II.
 */
+
+
+
+// 2022.3.28
+// 偷懶
