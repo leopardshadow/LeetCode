@@ -29,3 +29,7 @@ public:
 Runtime: 72 ms, faster than 96.49% of C++ online submissions for Container With Most Water.
 Memory Usage: 59.1 MB, less than 39.03% of C++ online submissions for Container With Most Water.
 */
+
+
+// 2022.4.5
+// 偷懶
