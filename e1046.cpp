@@ -15,7 +15,11 @@ c > b > a，有兩種弄法
 (1) 會比 (2) 好，原因是 (b - a) 和 c 的差距又變大了 
 | c - b - a | vs. c - b + a，(c - b) 大家都有，且都是正的，一個是加上 a 拉大差距，另一個則是減掉 a，雖然可能減太多變成負的要用絕對值拉回來，但是會比較小
 
-應該可以推到 4 個、5 個 ...
+應該可以推到 4 個、5 個 ... 嗎？？？
+---
+這題的變形是 [1049. Last Stone Weight II
+](https://leetcode.com/problems/last-stone-weight-ii/)，會用到 DP
+之前居然寫過，再看時居然沒印象 QQ
 */
 
 class Solution {
