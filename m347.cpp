@@ -44,3 +44,32 @@ public:
 Runtime: 16 ms, faster than 74.68% of C++ online submissions for Top K Frequent Elements.
 Memory Usage: 13.6 MB, less than 89.75% of C++ online submissions for Top K Frequent Elements.
 */
+
+
+
+// 2022.4.9
+
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        
+        unordered_map<int, int> m;
+        for (const int &n : nums)
+            m[n]++;
+        
+        priority_queue<pair<int, int>> pq;
+        for (auto it : m)
+            pq.push({it.second, it.first});  // sort by .second (times)
+            
+        vector<int> ans;
+        for (int i = 0; i < k; i++) {
+            ans.push_back(pq.top().second);  // it refers to it.first
+            pq.pop();
+        }
+        return ans;
+    }
+};
+/*
+Runtime: 36 ms, faster than 11.51% of C++ online submissions for Top K Frequent Elements.
+Memory Usage: 13.6 MB, less than 89.57% of C++ online submissions for Top K Frequent Elements.
+*/
