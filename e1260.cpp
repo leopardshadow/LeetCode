@@ -51,3 +51,33 @@ public:
 Runtime: 119 ms, faster than 7.98% of C++ online submissions for Shift 2D Grid.
 Memory Usage: 13.9 MB, less than 87.46% of C++ online submissions for Shift 2D Grid.
 */
+
+
+
+
+/*
+嘗試不額外存 grid
+剛剛想錯了，我把他依照 mod k 分組，但他們的數字不是只在組之間互換
+---
+應該先寫這題 https://leetcode.com/problems/rotate-array/
+*/
+
+class Solution {
+public:
+    vector<vector<int>> shiftGrid(vector<vector<int>>& grid, int k) {
+        int R = grid.size(), C = grid[0].size();
+        k = k % (R * C);
+        for (int i = 0; i < k; i++) {
+            int temp = grid[(i + R * C - k)/C][(i + R * C - k)%C];
+            int j;
+            for (j = i + R * C - k; j - k >= 0; j -= k) {
+                cout << "j - " << j << endl;
+                grid[j/C][j%C] = grid[(j-k)/C][(j-k)%C];
+            }
+            
+            int t = k - j % k;
+            grid[t/C][t%C] = temp;
+        }
+        return grid;
+    }
+};
