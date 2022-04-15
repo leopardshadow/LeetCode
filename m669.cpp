@@ -26,3 +26,32 @@ public:
 Runtime: 16 ms, faster than 62.17% of C++ online submissions for Trim a Binary Search Tree.
 Memory Usage: 24 MB, less than 7.06% of C++ online submissions for Trim a Binary Search Tree.
 */
+
+
+
+
+// 2022.4.15
+
+class Solution {
+public:
+    TreeNode* trimBST(TreeNode* root, int low, int high) {
+        if (!root)
+            return NULL;
+        if (root->val < low) {
+            root = trimBST(root->right, low, high);
+        }
+        else if (root->val > high) {
+            root = trimBST(root->left, low, high);
+        }
+        else {
+            root->left = trimBST(root->left, low, high);
+            root->right = trimBST(root->right, low, high);
+        }
+        return root;
+    }
+};
+// low 和 high 的參數傳遞改成 reference 後表現暴增！！
+/*
+Runtime: 10 ms, faster than 95.58% of C++ online submissions for Trim a Binary Search Tree.
+Memory Usage: 23.9 MB, less than 44.36% of C++ online submissions for Trim a Binary Search Tree.
+*/
