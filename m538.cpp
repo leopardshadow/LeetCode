@@ -35,6 +35,7 @@ Memory Usage: 33.4 MB, less than 93.24% of C++ online submissions for Convert BS
 /*
 他說要把 BST 轉成 greater tree，原先的 key 值要再加上所有大於他的 key 值
  --> inorder traversal
+ (BST 常常都是做 inorder traversal，看要 ascending 還是 descending：左中右 or 右中左)
 */
 
 class Solution {
