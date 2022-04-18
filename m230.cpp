@@ -68,3 +68,42 @@ public:
 Runtime: 16 ms, faster than 83.56% of C++ online submissions for Kth Smallest Element in a BST.
 Memory Usage: 24 MB, less than 98.77% of C++ online submissions for Kth Smallest Element in a BST.
 */
+
+
+
+//***************************************************************************//
+// 2022.4.18
+
+/*
+inorder!
+---
+那時候沒看清楚範圍，>= 0 打成 > 0 吃了一個 WA ...
+---
+另外要注意順序 (左 -> 中 -> 右) 啊啊啊啊
+*/
+
+class Solution {
+    int index;
+public:
+    int kthSmallest(TreeNode* root, int k) {
+        index = k;
+        return inorder(root);
+    }
+    int inorder(TreeNode* node) {
+        if (!node)
+            return -1;
+        int ret = inorder(node->left);
+        if (ret >= 0)
+            return ret;
+        
+        index--;  // 1-indexed -> -1 first
+        if (index == 0)
+            return node->val;
+
+        return inorder(node->right);
+    }
+};
+/*
+Runtime: 26 ms, faster than 45.50% of C++ online submissions for Kth Smallest Element in a BST.
+Memory Usage: 24 MB, less than 87.81% of C++ online submissions for Kth Smallest Element in a BST.
+*/
