@@ -15,6 +15,8 @@ else
 m = a -> if search 為 true -> r = a，跳出迴圈
 情況二：答案是 a + 1
 m = a -> if search 為 false -> l = a + 1 -> 跳出迴圈
+---
+另一個記法是 (l + r) / 2 無條件捨去，可能是比真實中點小的，所以小的 (l) 可以往上 1，但 r 不行
 */
 
 class Solution {
