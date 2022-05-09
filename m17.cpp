@@ -39,3 +39,35 @@ public:
 Runtime: 0 ms, faster than 100.00% of C++ online submissions for Letter Combinations of a Phone Number.
 Memory Usage: 6.7 MB, less than 38.43% of C++ online submissions for Letter Combinations of a Phone Number.
 */
+
+
+//******************************************************************************//
+// 2022.5.9
+
+class Solution {
+    vector<string> ans;
+    vector<string> tables = {"", "", "abc", "def", "ghi", "jkl", 
+                             "mno", "pqrs", "tuv", "wxyz"};
+public:
+    
+    void cal(const string &digits, int index, string number) {
+        if (index >= digits.length())
+            ans.push_back(number);
+        else {
+            for (int i = 0; i < tables[digits[index] - '0'].length(); i++)
+                cal(digits, index + 1, number + tables[digits[index] - '0'][i]);
+        }
+    }
+    
+    vector<string> letterCombinations(string digits) {
+        
+        if (digits.length())
+            cal(digits, 0, "");
+        
+        return ans;
+    }
+};
+/*
+Runtime: 0 ms, faster than 100.00% of C++ online submissions for Letter Combinations of a Phone Number.
+Memory Usage: 6.6 MB, less than 60.00% of C++ online submissions for Letter Combinations of a Phone Number.
+*/
