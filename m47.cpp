@@ -39,3 +39,7 @@ public:
 Runtime: 24 ms, faster than 31.12% of C++ online submissions for Permutations II.
 Memory Usage: 15.4 MB, less than 12.13% of C++ online submissions for Permutations II.
 */
+
+
+// 2022.5.12 
+// 偷懶
