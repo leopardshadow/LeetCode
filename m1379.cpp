@@ -137,3 +137,29 @@ public:
 Runtime: 1034 ms, faster than 5.01% of C++ online submissions for Find a Corresponding Node of a Binary Tree in a Clone of That Tree.
 Memory Usage: 163.9 MB, less than 58.30% of C++ online submissions for Find a Corresponding Node of a Binary Tree in a Clone of That Tree.
 */
+
+
+/*
+original 和 cloned 一起往左跑、往右跑
+---
+這個看起來比較漂亮
+*/
+
+class Solution {
+public:
+    TreeNode* getTargetCopy(TreeNode* original, TreeNode* cloned, TreeNode* target) {
+        TreeNode *temp;
+        if (!original || !cloned)
+            return NULL;
+        else if (original == target)
+            return cloned;
+        else if ((temp = getTargetCopy(original->left, cloned->left, target)))
+            return temp;
+        else
+            return getTargetCopy(original->right, cloned->right, target);
+    }
+};
+/*
+Runtime: 588 ms, faster than 74.74% of C++ online submissions for Find a Corresponding Node of a Binary Tree in a Clone of That Tree.
+Memory Usage: 163.9 MB, less than 58.30% of C++ online submissions for Find a Corresponding Node of a Binary Tree in a Clone of That Tree.
+*/
