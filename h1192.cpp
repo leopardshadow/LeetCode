@@ -8,7 +8,7 @@
 0 -- X -- 1 -- 2
 在這個例子中，每一條 edge 都是 critical connection，斷開任意一條都會讓 node 不在彼此連接
 ---
-不知道 Tarjan's algorithm 的話這題真的寫不出來欸 ... QQ
+不知道 Tarjan's algorithm 的話這題真的寫不出來欸 ... QQ 
 ---
 其實這個題目也可以換個方式出，給一些彼此可能互相不連接的 nodes，如何讓他整體連接在一起
 作法也是先找到 strongly connected componenets，連接他們就好
