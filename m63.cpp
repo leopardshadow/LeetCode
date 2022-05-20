@@ -76,3 +76,42 @@ int uniquePathsWithObstacles(int** obstacleGrid, int obstacleGridSize, int* obst
 Runtime: 3 ms, faster than 73.91% of C online submissions for Unique Paths II.
 Memory Usage: 6 MB, less than 69.57% of C online submissions for Unique Paths II.
 */
+
+
+
+// 2022.5.20
+
+/*
+這種走迷宮的題目一定要注意開始和終點不能走的情況
+---
+上次寫居然是在用 C 的時候，這次改成 C++ 的版本，在判斷條件上也用了更簡潔的寫法
+我是先算 X 的部分
+X X X X
+X _ _ _
+X _ _ _ 
+以橫的那條來說，cnt[0][j] == cnt[0][j-1] == 1，除非 obstacle[0][j] == 1，且 cnt[0][x] == 0 for x >= j
+直的也同理
+*/
+
+class Solution {
+public:
+    int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
+        int n = obstacleGrid.size(), m = obstacleGrid[0].size();
+        vector<vector<int>> cnt(n, vector<int>(m, 0));
+        cnt[0][0] = (obstacleGrid[0][0] == 0 ? 1 : 0);
+        for (int i = 1; i < n; i++)
+            cnt[i][0] = cnt[i-1][0] && (obstacleGrid[i][0] == 0);
+        for (int j = 1; j < m; j++)
+            cnt[0][j] = cnt[0][j-1] && (obstacleGrid[0][j] == 0);
+        for (int i = 1; i < n; i++) {
+            for (int j = 1; j < m; j++) {
+                cnt[i][j] = obstacleGrid[i][j] == 0 ? (cnt[i-1][j] + cnt[i][j-1]) : 0;
+            }
+        }
+        return cnt[n-1][m-1];
+    }
+};
+/*
+Runtime: 3 ms, faster than 80.74% of C++ online submissions for Unique Paths II.
+Memory Usage: 7.7 MB, less than 60.56% of C++ online submissions for Unique Paths II.
+*/
