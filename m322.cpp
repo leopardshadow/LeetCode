@@ -148,3 +148,31 @@ public:
         return dp[amount];
     }
 };
+
+
+
+
+// 2022.5.21
+
+/*
+一開始看錯題目，以為他想問的是有幾種方式可以用 coins 組出 amount @@
+但他問的是用最少 coin 的那一種方法需要幾個硬幣而已
+*/
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        vector<int> dp(amount + 1, INT_MAX);
+        dp[0] = 0;
+        for (const int &c : coins) {
+            for (int a = c; a <= amount; a++) {
+                if (dp[a-c] != INT_MAX)
+                    dp[a] = min(dp[a], 1 + dp[a-c]); // keep it the same or use the new coin
+            }
+        }
+        return dp[amount] == INT_MAX ? -1 : dp[amount];
+    }
+};
+/*
+Runtime: 87 ms, faster than 77.15% of C++ online submissions for Coin Change.
+Memory Usage: 14.4 MB, less than 68.59% of C++ online submissions for Coin Change.
+*/
