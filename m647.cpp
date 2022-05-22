@@ -52,3 +52,7 @@ public:
 Runtime: 164 ms, faster than 12.56% of C++ online submissions for Palindromic Substrings.
 Memory Usage: 6.2 MB, less than 97.25% of C++ online submissions for Palindromic Substrings.
 */
+
+
+// 2022.5.22
+// 偷懶ww
