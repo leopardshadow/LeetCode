@@ -67,3 +67,29 @@ public:
         return st.size();
     }
 };
+
+
+
+// 今天 5.25 Daily - 354. Russian Doll Envelopes 會用到 LIS 
+
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        vector<int> lis;
+        for(int i = 0; i < nums.size();i++){
+            
+            int idx = lower_bound(lis.begin(), lis.end(), nums[i]) - lis.begin();
+            
+            if(idx >= lis.size())
+                lis.push_back(nums[i]);
+            else
+                lis[idx] = nums[i];
+        }
+        
+        return lis.size();
+    }
+};
+/*
+Runtime: 14 ms, faster than 79.38% of C++ online submissions for Longest Increasing Subsequence.
+Memory Usage: 10.4 MB, less than 67.17% of C++ online submissions for Longest Increasing Subsequence.
+*/
