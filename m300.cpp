@@ -69,8 +69,13 @@ public:
 };
 
 
-
+//***************************************************************************//
 // 今天 5.25 Daily - 354. Russian Doll Envelopes 會用到 LIS 
+
+/*
+這裡 LIS[i] 的意思是，長度 i+1 的所有 increasing subsequence 中，最小的末位值
+這個值很重要，因為同樣長度為 3 的 increasing subsequence [1,2,8] 和 [2,4,5]，後者比較好，因為他更有可能再往後接變長
+*/
 
 class Solution {
 public:
@@ -78,18 +83,18 @@ public:
         vector<int> lis;
         for(int i = 0; i < nums.size();i++){
             
-            int idx = lower_bound(lis.begin(), lis.end(), nums[i]) - lis.begin();
+            auto it = lower_bound(lis.begin(), lis.end(), nums[i]);
             
-            if(idx >= lis.size())
+            if(it == lis.end())
                 lis.push_back(nums[i]);
             else
-                lis[idx] = nums[i];
+                *it = nums[i];
         }
         
         return lis.size();
     }
 };
 /*
-Runtime: 14 ms, faster than 79.38% of C++ online submissions for Longest Increasing Subsequence.
-Memory Usage: 10.4 MB, less than 67.17% of C++ online submissions for Longest Increasing Subsequence.
+Runtime: 16 ms, faster than 75.18% of C++ online submissions for Longest Increasing Subsequence.
+Memory Usage: 10.3 MB, less than 88.02% of C++ online submissions for Longest Increasing Subsequence.
 */
