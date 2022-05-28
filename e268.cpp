@@ -38,3 +38,25 @@ public:
 Runtime: 8 ms, faster than 99.81% of C++ online submissions for Missing Number.
 Memory Usage: 18.1 MB, less than 18.80% of C++ online submissions for Missing Number.
 */
+
+
+
+// 2022.5.28
+
+/*
+之前是用 bit operation 的方式做，這次換一個也是 TC O(n) SC O(1) 的方法
+*/
+
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        int sum = 0;
+        for (const int &n : nums)
+            sum += n;
+        return (nums.size() + 1) * (nums.size()) / 2 - sum;
+    }
+};
+/*
+Runtime: 20 ms, faster than 80.22% of C++ online submissions for Missing Number.
+Memory Usage: 17.9 MB, less than 65.37% of C++ online submissions for Missing Number.
+*/
