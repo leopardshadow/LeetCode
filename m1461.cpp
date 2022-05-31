@@ -53,3 +53,49 @@ public:
 Runtime: 615 ms, faster than 34.59% of C++ online submissions for Check If a String Contains All Binary Codes of Size K.
 Memory Usage: 44.3 MB, less than 67.61% of C++ online submissions for Check If a String Contains All Binary Codes of Size K.
 */
+
+
+/*
+其他部分都一樣，但不用 set 而是用 array，快好多，space 也改善很多
+---
+吃了一個 TLE 因為我忘記把 debug 的 cout 拿到 = =
+一個 WA，submit 前忘記檢查，把 i 打成 num @@
+*/
+
+class Solution {
+public:
+    bool hasAllCodes(string s, int k) {
+        
+        if (s.length() < k)
+            return false;
+        
+        int num = 0;
+        for (int i = 0; i < k; i++) {
+            num <<= 1;
+            if (s[i] == '1')
+                num = num | 1;
+        }
+        
+        vector<bool> ns(1 << k, false);
+        ns[num] = true;
+        
+        for (int i = k; i < s.length(); i++) {
+            num <<= 1;
+            num &= (~(1 << k));  // clear the k.th bit (count from LSB)
+            if (s[i] == '1')
+                num = num | 1;
+            
+            ns[num] = true;
+        }
+        
+        for (int i = 0; i < (1 << k); i++) {
+            if (!ns[i])
+                return false;
+        }
+        return true;
+    }
+};
+/*
+Runtime: 57 ms, faster than 95.28% of C++ online submissions for Check If a String Contains All Binary Codes of Size K.
+Memory Usage: 18.9 MB, less than 92.77% of C++ online submissions for Check If a String Contains All Binary Codes of Size K.
+*/
