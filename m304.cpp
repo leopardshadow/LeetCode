@@ -39,3 +39,6 @@ public:
 Runtime: 368 ms, faster than 90.17% of C++ online submissions for Range Sum Query 2D - Immutable.
 Memory Usage: 148 MB, less than 47.28% of C++ online submissions for Range Sum Query 2D - Immutable.
 */
+
+
+// 2022.6.3
