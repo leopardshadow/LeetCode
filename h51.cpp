@@ -126,3 +126,5 @@ public:
 Runtime: 8 ms, faster than 64.00% of C++ online submissions for N-Queens.
 Memory Usage: 7.4 MB, less than 51.81% of C++ online submissions for N-Queens.
 */
+
+// 2022.6.4 !
