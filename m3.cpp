@@ -70,3 +70,40 @@ public:
         return maxLen;
     }
 };
+
+
+
+
+// 2022.6.10
+
+/*
+如果要一次就寫出完全 bug-free 不簡單 QQ
+*/
+
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        if (s.length() == 0)
+            return 0;
+        map<char, int> m;
+        int ans = 1, l = 0, r = 1;  // substring [l, r)
+        m[s[0]]++;
+        while (r < s.length()) {
+            if (m[s[r]] == 0) {
+                m[s[r]]++;
+                r++;
+                ans = max(ans, r - l);
+            }
+            else {
+                m[s[l]]--;
+                l++;
+            }
+        }
+        
+        return ans;
+    }
+};
+/*
+Runtime: 56 ms, faster than 20.88% of C++ online submissions for Longest Substring Without Repeating Characters.
+Memory Usage: 8.5 MB, less than 48.77% of C++ online submissions for Longest Substring Without Repeating Characters.
+*/
