@@ -74,3 +74,59 @@ public:
         return ans;
     }
 };
+
+//******************************************************************************//
+
+// 2022.6.15
+
+/*
+原來去年 2021.11.26 G VO 之前就嘗試寫過，但一直 WA (上面都 WA 嗚嗚嗚)
+---
+A 是 B 的 predecessor <=> A 插一個字就可以變成 B (所以他們長度差 1)
+---
+我先把所有 words 依據長度分類，接著把長度為 n+1 的字串 (a) 一一輪流和長度 n 的所有字串 (b) 比較，如果他們符合 predecessor 的關係，dp[a] = max(dp[a], dp[b] + 1), ans = max(ans, dp[a])
+---
+看討論區有更快的作法 ><
+*/
+
+class Solution {
+    // s1 - shorter, s2 - longer
+    bool isPred(const string &s1, const string &s2) {
+        int i = 0, j = 0;
+        while (j < s2.length()) {
+            if(s1[i] == s2[j]) {
+                i++;
+                j++;
+            }
+            else
+                j++;
+        }
+        if(i == s1.length() && j == s2.length()) 
+            return true;
+        else 
+            return false;
+    }
+public:
+    int longestStrChain(vector<string>& words) {
+        unordered_map<string, int> m[17];
+        for (string w : words)
+            m[w.length()][w] = 1;
+        
+        int ans = 1;
+        for (int l = 2; l <= 16; l++) {
+            for (auto it = m[l].begin(); it != m[l].end(); it++) {
+                string s = it->first;
+                for (auto it2 = m[l-1].begin(); it2 != m[l-1].end(); it2++) {
+                    if (isPred(it2->first, s))
+                        it->second = max(it->second, it2->second + 1);
+                }
+                ans = max(ans, it->second);
+            }
+        }
+        return ans;
+    }
+};
+/*
+Runtime: 55 ms, faster than 95.70% of C++ online submissions for Longest String Chain.
+Memory Usage: 18.1 MB, less than 45.77% of C++ online submissions for Longest String Chain.
+*/
