@@ -16,7 +16,7 @@ sliding window 的題目小心範圍RRRRRRR
 
 因為不大相信所以再點了一次 submission，結果執行時間瞬間砍半，從 112 ms 變成 56 ms，只贏 8.79% 變成 74.41%
 Hello????? 他時間只是參考用欸
-還是在我兩次 submit 中間有一大堆人交 ; 或是因為 chche 所以比較快 (X
+還是在我兩次 submit 中間有一大堆人交 ; 或是因為 cache 所以比較快 (X
 
 看到一個有趣的想法是先算整條，再去計算中間沒取的部分，拿他去扣整條的和，不會比較快，但寫起來會比較簡單 (嗎？
 反正沒想過這樣寫就是了
@@ -76,4 +76,31 @@ public:
 /*
 Runtime: 56 ms, faster than 74.41% of C++ online submissions for Maximum Points You Can Obtain from Cards.
 Memory Usage: 42.5 MB, less than 48.82% of C++ online submissions for Maximum Points You Can Obtain from Cards.
+*/
+
+
+
+
+
+// 2022.6.26
+
+class Solution {
+public:
+    int maxScore(vector<int>& points, int k) {
+        int n = points.size(), sum = 0, ans = -1;
+        for (int i = 0; i < k; i++)
+            sum += points[i];
+        ans = max(ans, sum);
+        
+        for (int i = 0; i < k; i++) {
+            sum -= points[k - 1 - i];
+            sum += points[n - 1 - i];
+            ans = max(ans, sum);
+        }
+        
+        return ans;
+    }
+};
+/*Runtime: 108 ms, faster than 26.36% of C++ online submissions for Maximum Points You Can Obtain from Cards.
+Memory Usage: 42.4 MB, less than 80.56% of C++ online submissions for Maximum Points You Can Obtain from Cards.
 */
