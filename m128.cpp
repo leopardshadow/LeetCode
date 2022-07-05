@@ -34,3 +34,35 @@ public:
 Runtime: 68 ms, faster than 80.84% of C++ online submissions for Longest Consecutive Sequence.
 Memory Usage: 30.9 MB, less than 48.16% of C++ online submissions for Longest Consecutive Sequence.
 */
+
+
+
+
+// 2022.7.5
+
+/*
+偷懶，意外的很快w
+*/
+
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        if (nums.size() == 0)
+            return 0;
+        sort(nums.begin(), nums.end());
+        int ans = 1, curLen = 1;
+        for (int i = 1; i < nums.size(); i++) {
+            if (nums[i-1] + 1 == nums[i])
+                ans = max(ans, ++curLen);
+            else if (nums[i-1] == nums[i])
+                ;
+            else
+                curLen = 1;
+        }
+        return ans;
+    }
+};
+/*
+Runtime: 101 ms, faster than 89.18% of C++ online submissions for Longest Consecutive Sequence.
+Memory Usage: 33.8 MB, less than 85.63% of C++ online submissions for Longest Consecutive Sequence.
+*/
