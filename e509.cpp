@@ -22,3 +22,7 @@ public:
 Runtime: 0 ms, faster than 100.00% of C++ online submissions for Fibonacci Number.
 Memory Usage: 5.8 MB, less than 79.40% of C++ online submissions for Fibonacci Number.
 */
+
+
+// 2022.7.6
+// 要開始輪 DP 了嗎 ><
