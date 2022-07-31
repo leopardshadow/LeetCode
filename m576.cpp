@@ -5,6 +5,10 @@
 DP QQ．．．
 for i ... for j ... 的雙層迴圈內的判斷條件不能分開來寫
 例如 (i = 0, j = 0) 本來就應該被計算兩次
+---
+結果上次沒 submit 到，害我斷在連續 181
+但 submit 遇到 runtime error，他說超過範圍，全部改 long 說我記憶體用超過
+先這樣吧...
 */
 
 class Solution {
