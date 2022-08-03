@@ -62,3 +62,32 @@ public:
     }
 };
 
+
+
+// 2022.8.3
+
+/*
+暴力也會過耶
+*/
+
+class MyCalendar {
+    vector<pair<int, int>> cal;
+public:
+    MyCalendar() {
+        
+    }
+    
+    bool book(int start, int end) {
+        for (auto &p : cal) {
+            if (end > p.first && start < p.second)
+                return false;
+        }
+        cal.push_back({start, end});
+        return true;
+    }
+};
+/*
+Runtime: 145 ms, faster than 65.04% of C++ online submissions for My Calendar I.
+Memory Usage: 37.7 MB, less than 77.01% of C++ online submissions for My Calendar I.
+*/
+
