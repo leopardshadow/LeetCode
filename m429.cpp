@@ -164,3 +164,35 @@ int** levelOrder(struct Node* root, int* returnSize, int** returnColumnSizes) {
 
     return result;
 }*/
+
+
+
+
+
+// 2022.9.5
+
+/*
+用 C vs. C++ 寫複雜程度差好多喔XD
+*/
+
+class Solution {
+    vector<vector<int>> ans;
+    void traverse(Node* node, int level) {
+        if (!node)
+            return;
+        if (level >= ans.size())
+            ans.push_back({});
+        ans[level].push_back(node->val);
+        for (auto &child : node->children)
+            traverse(child, level + 1);
+    }
+public:
+    vector<vector<int>> levelOrder(Node* root) {
+        traverse(root, 0);
+        return ans;
+    }
+};
+/*
+Runtime: 36 ms, faster than 52.57% of C++ online submissions for N-ary Tree Level Order Traversal.
+Memory Usage: 12 MB, less than 13.52% of C++ online submissions for N-ary Tree Level Order Traversal.
+*/
