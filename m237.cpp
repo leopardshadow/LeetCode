@@ -32,3 +32,22 @@ void deleteNode(struct ListNode* node) {
 Runtime: 4 ms, faster than 92.85% of C online submissions for Delete Node in a Linked List.
 Memory Usage: 6.5 MB, less than 31.68% of C online submissions for Delete Node in a Linked List.
 */
+
+
+// 2022.10.13
+
+/*
+從 easy 變 medium 耶
+*/
+
+class Solution {
+public:
+    void deleteNode(ListNode* node) {
+        node->val = (node->next)->val;
+        node->next = (node->next)->next;
+    }
+};
+/*
+Runtime: 39 ms, faster than 11.01% of C++ online submissions for Delete Node in a Linked List.
+Memory Usage: 7.6 MB, less than 37.95% of C++ online submissions for Delete Node in a Linked List.
+*/
