@@ -169,3 +169,6 @@ public:
 Runtime: 0 ms, faster than 100.00% of C++ online submissions for House Robber.
 Memory Usage: 8 MB, less than 6.27% of C++ online submissions for House Robber.
 */
+
+// 2022.12.14
+// 一年以上了，G 也兩個半月了
